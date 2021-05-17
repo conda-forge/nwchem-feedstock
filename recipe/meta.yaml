@@ -11,8 +11,8 @@ source:
     - depend.patch
 
 build:
-  number: 0
-  skip: True  # [not linux]
+  number: 1
+  skip: True  # [win]
 
 requirements:
     build:

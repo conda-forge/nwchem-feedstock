@@ -20,13 +20,15 @@ export _CC=gcc
 #=================================================
 export NWCHEM_TOP="$SRC_DIR"
 
-if [[ $ARCH = 64 ]]; then
-	export TARGET=LINUX64
-	export NWCHEM_TARGET=LINUX64
+# select ARCH file and version
+if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+    export TARGET=LINUX64
+    export NWCHEM_TARGET=LINUX64
 else
-	export TARGET=LINUX
-	export NWCHEM_TARGET=LINUX
+    export TARGET=MACX64
+    export NWCHEM_TARGET=MACX64
 fi
+
 
 #export NWCHEM_MODULES="all python nwxc"
 export NWCHEM_MODULES="all python"
