@@ -56,6 +56,11 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 #=================================================
 
 cd "$NWCHEM_TOP"/src
+# show compiler versions
+${CC} -v
+${FC} -v
+${FC} -dM -E - < /dev/null 2> /dev/null | grep GNUC
+#
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32 
