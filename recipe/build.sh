@@ -21,7 +21,7 @@ export _CC=gcc
 export NWCHEM_TOP="$SRC_DIR"
 
 # select ARCH file and version
-if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+if [[ -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
     export TARGET=LINUX64
     export NWCHEM_TARGET=LINUX64
 else
@@ -44,7 +44,7 @@ export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread -lrt"
 export BLAS_SIZE=4
 export USE_64TO32=y
 
-export LAPACK_LIB="-lopenblas"
+export LAPACK_LIB="$BLASOPT"
 
 export SCALAPACK_SIZE=4
 export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
