@@ -42,7 +42,7 @@ export USE_NOFSCHECK=Y
 #export PYTHONVERSION="2.7"
 #export USE_PYTHONCONFIG=y
 
-export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread -lrt"
+export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
 export BLAS_SIZE=4
 export USE_64TO32=y
 
