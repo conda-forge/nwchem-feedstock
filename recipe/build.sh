@@ -31,7 +31,9 @@ fi
 
 
 #export NWCHEM_MODULES="all python nwxc"
-export NWCHEM_MODULES="all python"
+#export NWCHEM_MODULES="all python"
+#faster build
+export NWCHEM_MODULES="nwdft driver solvation vib property"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 
@@ -57,7 +59,7 @@ cd "$NWCHEM_TOP"/src
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32 
-make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 || true
+make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" || true
 cat $NWCHEM_TOP/src/tools/build/config.log
 
 #=================================================
