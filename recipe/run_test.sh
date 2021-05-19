@@ -11,8 +11,12 @@ export NWCHEM_TARGET=""
 export MPIRUN_PATH=$PREFIX/bin/mpirun 
 # nwchem cannot deal with path lengths >255 characters
 #export NWCHEM_BASIS_LIBRARY=$PREFIX/share/nwchem/libraries/
-cp -r $PREFIX/share/nwchem/libraries/ $SRC_DIR
-export NWCHEM_BASIS_LIBRARY=$SRC_DIR/libraries
+mkdir -p $SRC_DIR/src/basis
+ln -s $PREFIX/share/nwchem/libraries/ $SRC_DIR/src/basis/libraries
+# not sure this env var actually has any effect
+# (the tests may be looking for the libraries at a relative location)
+export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
+
 
 cd $NWCHEM_TOP/QA
 ./doafewqmtests.mpi 2 | tee tests.log
