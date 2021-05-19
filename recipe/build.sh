@@ -48,8 +48,8 @@ export USE_64TO32=y
 
 export LAPACK_LIB="$BLASOPT"
 
-#export SCALAPACK_SIZE=4
-#export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
+export SCALAPACK_SIZE=4
+export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 
 #=================================================
 #=Make=NWChem
@@ -66,10 +66,6 @@ make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32
 if [[  "$NWCHEM_TARGET" == "MACX64" ]]; then
     make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
     otool -L ../bin/MACX64/nwchem
-    #run tests here
-    ../bin/MACX64/nwchem
-    cd ../QA
-    ./runtests.mpi.unix dft_he2+
 else
     make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1
 fi
