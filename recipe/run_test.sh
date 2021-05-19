@@ -1,5 +1,5 @@
 #!/bin/bash -f
-set -x
+set -ex
 
 if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm_rsh_agent=sh
