@@ -14,5 +14,4 @@ export MPIRUN_PATH=$PREFIX/bin/mpirun
 export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 
 cd $NWCHEM_TOP/QA
-./runtests.mpi.unix dft_he2+
-#./doafewqmtests.mpi 2
+./doafewqmtests.mpi 2
