@@ -9,7 +9,7 @@ export USE_MPI="y"
 export USE_MPIF="y"
 export USE_MPIF4="y"
 
-export MPI_LOC="$PREFIX" #location of openmpi installation
+#export MPI_LOC="$PREFIX" #location of openmpi installation
 #export FC="${FC}"
 export _FC=gfortran
 #export CC="${CC}"
@@ -48,8 +48,8 @@ export USE_64TO32=y
 
 export LAPACK_LIB="$BLASOPT"
 
-export SCALAPACK_SIZE=4
-export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
+#export SCALAPACK_SIZE=4
+#export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 
 #=================================================
 #=Make=NWChem
@@ -59,14 +59,14 @@ cd "$NWCHEM_TOP"/src
 # show compiler versions
 ${CC} -v
 ${FC} -v
-#${FC} -dM -E - < /dev/null 2> /dev/null
 #
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32 
 if [[  "$NWCHEM_TARGET" == "MACX64" ]]; then
     make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
-    GNU_GE_4_6=true GNU_GE_4_8=true  GNU_GE_6=true GNU_GE_8=true 
+    GNU_GE_4_6=true GNU_GE_4_8=true GNU_GE_6=true GNU_GE_8=true
+    otool -L ../bin/MACX64/nwchem
 else
     make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1
 fi
