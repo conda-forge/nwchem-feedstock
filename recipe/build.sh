@@ -93,20 +93,9 @@ EOF
 mkdir -p "$PREFIX/etc/conda/activate.d/" "$PREFIX/etc/conda/deactivate.d/"
 
 cat > "$PREFIX/etc/conda/activate.d/nwchem_env.sh" << "EOF"
-if [ ! -f $HOME/.nwchemrc ]; then
-    ln -s $CONDA_PREFIX/etc/default.nwchemrc $HOME/.nwchemrc
-	touch $HOME/.CONDANWCHEMRC
-fi
+export NWCHEM_BASIS_LIBRARY=$CONDA_PREFIX/share/nwchem/libraries/
+export NWCHEM_NWPW_LIBRARY=$CONDA_PREFIX/share/nwchem/libraryps/
 EOF
 cat > "$PREFIX/etc/conda/activate.d/nwchem_env.fish" << "EOF"
     bash $CONDA_PREFIX/etc/conda/activate.d/nwchem_env.sh
-EOF
-
-cat > "$PREFIX/etc/conda/deactivate.d/nwchem_env.sh" << "EOF"
-if [ -f $HOME/.CONDANWCHEMRC ]; then
-    rm $HOME/.CONDANWCHEMRC $HOME/.nwchemrc
-fi
-EOF
-cat > "$PREFIX/etc/conda/deactivate.d/nwchem_env.fish" << "EOF"
-    bash $CONDA_PREFIX/etc/conda/deactivate.d/nwchem_env.sh
 EOF
