@@ -31,9 +31,9 @@ fi
 
 
 #export NWCHEM_MODULES="all python nwxc"
-#export NWCHEM_MODULES="all python"
+export NWCHEM_MODULES="all python"
 #faster build
-export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
+#export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 
