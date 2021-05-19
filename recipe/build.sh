@@ -59,12 +59,17 @@ cd "$NWCHEM_TOP"/src
 # show compiler versions
 ${CC} -v
 ${FC} -v
-${FC} -dM -E - < /dev/null 2> /dev/null | grep GNUC
+#${FC} -dM -E - < /dev/null 2> /dev/null
 #
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32 
-make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
+if [[  "$NWCHEM_TARGET" == "MACX64" ]]; then
+    make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" \
+    GNU_GE_4_6=true GNU_GE_4_8=true  GNU_GE_6=true GNU_GE_8=true 
+else
+    make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1
+fi
 cat $NWCHEM_TOP/src/tools/build/config.log
 
 #=================================================
