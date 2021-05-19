@@ -30,9 +30,7 @@ else
 fi
 
 
-#export NWCHEM_MODULES="all python"
-# testing...
-export NWCHEM_MODULES="nwdft solvation driver"
+export NWCHEM_MODULES="all python"
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
