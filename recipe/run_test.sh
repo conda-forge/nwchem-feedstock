@@ -1,5 +1,5 @@
 #!/bin/bash -f
-set -x
+set -ex
 
 if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm_rsh_agent=sh
@@ -15,8 +15,3 @@ export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 
 cd $NWCHEM_TOP/QA
 ./doafewqmtests.mpi 2
-
-# just checking...
-perl nwparse.pl testoutputs/h2o_opt.out
-
-cat $NWCHEM_TOP/QA/testoutputs/h2o_opt.out

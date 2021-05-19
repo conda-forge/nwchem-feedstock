@@ -9,10 +9,11 @@ source:
   sha256: d63cf8c6e9df591ae8b542175999c16219757cc75fb6a528c06e7590a7f63271
   patches:
     - depend.patch
+    - make_config.patch
 
 build:
-  number: 0
-  skip: True  # [not linux]
+  number: 1
+  skip: True  # [win]
 
 requirements:
     build:

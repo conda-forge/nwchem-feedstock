@@ -9,7 +9,7 @@ export USE_MPI="y"
 export USE_MPIF="y"
 export USE_MPIF4="y"
 
-export MPI_LOC="$PREFIX" #location of openmpi installation
+#export MPI_LOC="$PREFIX" #location of openmpi installation
 #export FC="${FC}"
 export _FC=gfortran
 #export CC="${CC}"
@@ -20,16 +20,19 @@ export _CC=gcc
 #=================================================
 export NWCHEM_TOP="$SRC_DIR"
 
-if [[ $ARCH = 64 ]]; then
-	export TARGET=LINUX64
-	export NWCHEM_TARGET=LINUX64
+# select ARCH file and version
+if [[ -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+    export TARGET=LINUX64
+    export NWCHEM_TARGET=LINUX64
 else
-	export TARGET=LINUX
-	export NWCHEM_TARGET=LINUX
+    export TARGET=MACX64
+    export NWCHEM_TARGET=MACX64
 fi
 
-#export NWCHEM_MODULES="all python nwxc"
+
 export NWCHEM_MODULES="all python"
+#faster build
+#export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 
@@ -38,11 +41,11 @@ export USE_NOFSCHECK=Y
 #export PYTHONVERSION="2.7"
 #export USE_PYTHONCONFIG=y
 
-export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread -lrt"
+export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
 export BLAS_SIZE=4
 export USE_64TO32=y
 
-export LAPACK_LIB="-lopenblas"
+export LAPACK_LIB="$BLASOPT"
 
 export SCALAPACK_SIZE=4
 export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
@@ -52,10 +55,14 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 #=================================================
 
 cd "$NWCHEM_TOP"/src
+# show compiler versions
+${CC} -v
+${FC} -v
+#
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
-make DEPEND_CC=${CC} CC=${CC}  _CC=${CC} 64_to_32 
-make CC=${CC} DEPEND_CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1
+make DEPEND_CC=${CC} CC=${CC} _CC=${CC} 64_to_32 
+make DEPEND_CC=${CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
 
 #=================================================
 #=Install=NWChem
