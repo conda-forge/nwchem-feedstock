@@ -29,7 +29,6 @@ requirements:
       - openssh
     run:
       - {{ mpi }}
-      - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
       - libblas * *openblas
       - openblas
       - libopenblas
