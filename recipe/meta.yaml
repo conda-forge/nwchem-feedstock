@@ -36,9 +36,37 @@ requirements:
       - python
 
 test:
+    # note: test files are included in the conda package
+    # avoid shipping more than necessary (test suite is large!)
     source_files:
-      - QA
-      - src/basis/libraries
+      - QA/run*
+      - QA/do*
+      - QA/tests/h2o_opt
+      - QA/tests/dft_he2+
+      - QA/tests/small_intchk
+      - QA/tests/h2o_dk
+      - QA/tests/cosmo_h2o_dft
+      - QA/tests/pyqa3
+      - QA/tests/tddft_h2o
+      - QA/tests/tddft_n2+
+      - QA/tests/tddft_ac_co
+      - QA/tests/hi_zora_sf
+      - QA/tests/prop_ch3f
+      - QA/tests/h2_bnl
+      - QA/tests/h2o_bnl
+      - QA/tests/h2o-camb3lyp-pol
+      - QA/tests/h2o-cambeckehh
+      - QA/tests/h2o-campbe0
+      - QA/tests/h2o-lcpbe
+      - QA/tests/o2_bnl
+      - QA/tests/o2_hfattn
+      - QA/tests/dmo_tddft_cd
+      - QA/tests/dmo_tddft_cd_velocity
+      - QA/tests/h2o-response
+      - QA/tests/h2o2-response
+      - QA/tests/h2o2-response-uhf
+      - QA/tests/h2o2-response-uhf-damping
+      - QA/tests/h2o2-prop-notrans
     requires:
       - perl
 
