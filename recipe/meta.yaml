@@ -10,6 +10,7 @@ source:
   patches:
     - depend.patch
     - make_config.patch
+    - python10.patch
 
 build:
   number: 3
