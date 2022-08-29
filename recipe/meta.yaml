@@ -11,6 +11,7 @@ source:
     - depend.patch
     - make_config.patch
     - python10.patch
+    - osx_arm64.patch
 
 build:
   number: 4
@@ -42,6 +43,7 @@ test:
     source_files:
       - QA/run*
       - QA/do*
+      - QA/nwpa*
       - QA/tests/h2o_opt
       - QA/tests/dft_he2+
       - QA/tests/small_intchk
