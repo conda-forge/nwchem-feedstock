@@ -25,13 +25,11 @@ requirements:
     host:
       - {{ mpi }}
       - openblas
-      - liblapack
       - scalapack
       - python
       - openssh
     run:
       - {{ mpi }}
-      - libblas * *openblas
       - openblas
       - libopenblas
       - scalapack
