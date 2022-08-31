@@ -19,6 +19,6 @@ export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 
 
 cd $NWCHEM_TOP/QA
-./doafewqmtests.mpi 2 | tee tests.log
+./doafewqmtests.mpi 2 1 | tee tests.log
 # fail if one of the tests failed
 ! grep "NWChem execution failed" tests.log || exit 1

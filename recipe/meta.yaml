@@ -12,6 +12,7 @@ source:
     - make_config.patch
     - python10.patch
     - osx_arm64.patch
+    - earlyexit.patch
 
 build:
   number: 4
