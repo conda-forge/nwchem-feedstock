@@ -10,9 +10,12 @@ source:
   patches:
     - depend.patch
     - make_config.patch
+    - python10.patch
+    - osx_arm64.patch
+    - earlyexit.patch
 
 build:
-  number: 3
+  number: 4
   skip: True  # [win]
 
 requirements:
@@ -23,13 +26,11 @@ requirements:
     host:
       - {{ mpi }}
       - openblas
-      - liblapack
       - scalapack
       - python
       - openssh
     run:
       - {{ mpi }}
-      - libblas * *openblas
       - openblas
       - libopenblas
       - scalapack
@@ -41,6 +42,7 @@ test:
     source_files:
       - QA/run*
       - QA/do*
+      - QA/nwpa*
       - QA/tests/h2o_opt
       - QA/tests/dft_he2+
       - QA/tests/small_intchk
