@@ -15,7 +15,7 @@ source:
     - earlyexit.patch
 
 build:
-  number: 4
+  number: 5
   skip: True  # [win]
 
 requirements:
@@ -86,3 +86,4 @@ about:
 extra:
   recipe-maintainers:
     - ltalirz
+    - edoapra
