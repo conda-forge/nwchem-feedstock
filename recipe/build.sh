@@ -34,9 +34,12 @@ fi
 #if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
 if [[ `uname -s` == "Darwin" ]]; then
     export NWCHEM_MODULES="all"
-    export MPI_INCLUDE=$(pkg-config --cflags-only-I ompi-f90|sed 's/-I//')
-    export MPI_LIB=$(`pkg-config --libs-only-L ompi-f90`|sed 's/-L//')
-    export LIBMPI=`pkg-config --libs-only-l ompi-f90`
+    MPI_INCLUDE=$(pkg-config --cflags-only-I ompi-f90|sed 's/-I//')
+    export MPI_INCLUDE
+    MPI_LIB=$(pkg-config --libs-only-L ompi-f90|sed 's/-L//')
+    export MPI_LIB
+    LIBMPI=$(pkg-config --libs-only-l ompi-f90)
+    export LIBMPI
     echo '****** output of env'
     env
     echo '****** end output of env'
