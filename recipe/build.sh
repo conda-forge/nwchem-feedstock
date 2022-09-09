@@ -31,7 +31,8 @@ else
     export BUILD_CC=clang
 fi
 
-if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
+#if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
+if [[ `uname -m` == "arm64" && `uname -s` == "Darwin" ]]; then
     export NWCHEM_MODULES="all"
     export MPI_INCLUDE=$(pkg-config --cflags-only-I ompi-f90|sed 's/-I//')
     export MPI_LIB=$(`pkg-config --libs-only-L ompi-f90`|sed 's/-L//')
