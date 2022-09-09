@@ -24,27 +24,22 @@ export NWCHEM_TOP="$SRC_DIR"
 if [[ -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
     export TARGET=LINUX64
     export NWCHEM_TARGET=LINUX64
-    export BUILD_CC=gcc
 else
     export TARGET=MACX64
     export NWCHEM_TARGET=MACX64
-    export BUILD_CC=clang
 fi
 
-#if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
-if [[ `uname -s` == "Darwin" ]]; then
-    export NWCHEM_MODULES="all"
+if [[ "$target_platform" == "osx-arm64" && "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
     export MPI_INCLUDE="$PREFIX/include -I$PREFIX/lib"
     export MPI_LIB=$PREFIX/lib
     export LIBMPI="-lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi"
     echo '****** output of env'
     env
     echo '****** end output of env'
-else
-    export NWCHEM_MODULES="all python"
 fi
+    export NWCHEM_MODULES="all python"
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
+#export NWCHEM_MODULES="nwdft driver solvation python"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 
@@ -71,10 +66,10 @@ cd "$NWCHEM_TOP"/src
 ${CC} -v
 ${FC} -v
 #
-make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${BUILD_CC} nwchem_config
+make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
-make DEPEND_CC=${BUILD_CC} CC=${CC} _CC=${CC} 64_to_32 
-make DEPEND_CC=${BUILD_CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
+make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
+make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
 
 #=================================================
 #=Install=NWChem
