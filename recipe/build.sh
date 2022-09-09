@@ -32,11 +32,14 @@ else
 fi
 
 #if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
-if [[ `uname -m` == "arm64" && `uname -s` == "Darwin" ]]; then
+if [[ `uname -s` == "Darwin" ]]; then
     export NWCHEM_MODULES="all"
     export MPI_INCLUDE=$(pkg-config --cflags-only-I ompi-f90|sed 's/-I//')
     export MPI_LIB=$(`pkg-config --libs-only-L ompi-f90`|sed 's/-L//')
     export LIBMPI=`pkg-config --libs-only-l ompi-f90`
+    echo '****** output of env'
+    env
+    echo '****** end output of env'
 else
     export NWCHEM_MODULES="all python"
 fi
