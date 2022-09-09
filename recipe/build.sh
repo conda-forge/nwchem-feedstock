@@ -32,7 +32,10 @@ else
 fi
 
 if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
-    export NWCHEM_MODULES="all python"
+    export NWCHEM_MODULES="all"
+    export MPI_INCLUDE=$(pkg-config --cflags-only-I ompi-f90|sed 's/-I//')
+    export MPI_LIB=$(`pkg-config --libs-only-L ompi-f90`|sed 's/-L//')
+    export LIBMPI=`pkg-config --libs-only-l ompi-f90`
 else
     export NWCHEM_MODULES="all python"
 fi
