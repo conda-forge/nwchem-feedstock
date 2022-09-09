@@ -24,13 +24,18 @@ export NWCHEM_TOP="$SRC_DIR"
 if [[ -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
     export TARGET=LINUX64
     export NWCHEM_TARGET=LINUX64
+    export BUILD_CC=gcc
 else
     export TARGET=MACX64
     export NWCHEM_TARGET=MACX64
+    export BUILD_CC=clang
 fi
 
-
-export NWCHEM_MODULES="all python"
+if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
+    export NWCHEM_MODULES="all python"
+else
+    export NWCHEM_MODULES="all python"
+fi
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
@@ -59,10 +64,10 @@ cd "$NWCHEM_TOP"/src
 ${CC} -v
 ${FC} -v
 #
-make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
+make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${BUILD_CC} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
-make DEPEND_CC=${CC} CC=${CC} _CC=${CC} 64_to_32 
-make DEPEND_CC=${CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
+make DEPEND_CC=${BUILD_CC} CC=${CC} _CC=${CC} 64_to_32 
+make DEPEND_CC=${BUILD_CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
 
 #=================================================
 #=Install=NWChem
