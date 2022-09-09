@@ -1,5 +1,9 @@
 #!/bin/bash -f
 set -ex
+if [[ "$HOST_PLATFORM" == "osx-arm64" ]]; then
+# cannot run osx-arm64 binaries on osx-x86    
+    exit 0
+endif
 
 if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm_rsh_agent=sh
