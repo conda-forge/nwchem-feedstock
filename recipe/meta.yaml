@@ -15,7 +15,7 @@ source:
     - earlyexit.patch
 
 build:
-  number: 5
+  number: 6
   skip: True  # [win]
 
 requirements:
