@@ -1,12 +1,12 @@
 {% set name = "nwchem" %}
-{% set version = "7.0.2" %}
+{% set version = "7.2.0" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://github.com/nwchemgit/nwchem/archive/refs/tags/v{{ version }}-release.tar.gz
-  sha256: d63cf8c6e9df591ae8b542175999c16219757cc75fb6a528c06e7590a7f63271
+  sha256: 321c57a1994fd12546cb0d5f86c3bd8bd305d4420a9d7d416f3d765c428cdae4
   patches:
     - depend.patch
     - make_config.patch
@@ -15,69 +15,69 @@ source:
     - earlyexit.patch
 
 build:
-  number: 6
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
-    build:
-      - {{ compiler('c') }}
-      - {{ compiler('fortran') }}
-      - make
-    host:
-      - {{ mpi }}
-      - openblas
-      - scalapack
-      - python
-      - openssh
-    run:
-      - {{ mpi }}
-      - openblas
-      - libopenblas
-      - scalapack
-      - python
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+    - make
+  host:
+    - {{ mpi }}
+    - openblas
+    - scalapack
+    - python
+    - openssh
+  run:
+    - {{ mpi }}
+    - openblas
+    - libopenblas
+    - scalapack
+    - python
 
 test:
     # note: test files are included in the conda package
     # avoid shipping more than necessary (test suite is large!)
-    source_files:
-      - QA/run*
-      - QA/do*
-      - QA/nwpa*
-      - QA/tests/h2o_opt
-      - QA/tests/dft_he2+
-      - QA/tests/small_intchk
-      - QA/tests/h2o_dk
-      - QA/tests/cosmo_h2o_dft
-      - QA/tests/pyqa3
-      - QA/tests/tddft_h2o
-      - QA/tests/tddft_n2+
-      - QA/tests/tddft_ac_co
-      - QA/tests/hi_zora_sf
-      - QA/tests/prop_ch3f
-      - QA/tests/h2_bnl
-      - QA/tests/h2o_bnl
-      - QA/tests/h2o-camb3lyp-pol
-      - QA/tests/h2o-cambeckehh
-      - QA/tests/h2o-campbe0
-      - QA/tests/h2o-lcpbe
-      - QA/tests/o2_bnl
-      - QA/tests/o2_hfattn
-      - QA/tests/dmo_tddft_cd
-      - QA/tests/dmo_tddft_cd_velocity
-      - QA/tests/h2o-response
-      - QA/tests/h2o2-response
-      - QA/tests/h2o2-response-uhf
-      - QA/tests/h2o2-response-uhf-damping
-      - QA/tests/h2o2-prop-notrans
-    requires:
-      - perl
+  source_files:
+    - QA/run*
+    - QA/do*
+    - QA/nwpa*
+    - QA/tests/h2o_opt
+    - QA/tests/dft_he2+
+    - QA/tests/small_intchk
+    - QA/tests/h2o_dk
+    - QA/tests/cosmo_h2o_dft
+    - QA/tests/pyqa3
+    - QA/tests/tddft_h2o
+    - QA/tests/tddft_n2+
+    - QA/tests/tddft_ac_co
+    - QA/tests/hi_zora_sf
+    - QA/tests/prop_ch3f
+    - QA/tests/h2_bnl
+    - QA/tests/h2o_bnl
+    - QA/tests/h2o-camb3lyp-pol
+    - QA/tests/h2o-cambeckehh
+    - QA/tests/h2o-campbe0
+    - QA/tests/h2o-lcpbe
+    - QA/tests/o2_bnl
+    - QA/tests/o2_hfattn
+    - QA/tests/dmo_tddft_cd
+    - QA/tests/dmo_tddft_cd_velocity
+    - QA/tests/h2o-response
+    - QA/tests/h2o2-response
+    - QA/tests/h2o2-response-uhf
+    - QA/tests/h2o2-response-uhf-damping
+    - QA/tests/h2o2-prop-notrans
+  requires:
+    - perl
 
 about:
   home: https://nwchemgit.github.io
   license: ECL-2.0
   license_family: OTHER
   license_file: LICENSE
-  summary: 'Open Source High-Performance Computational Chemistry'
+  summary: Open Source High-Performance Computational Chemistry
   description: |
     NWChem is actively developed by a consortium of developers and maintained by the Environmental Molecular Sciences Laboratory (EMSL), a US DOE Office of Science User Facility located at the Pacific Northwest National Laboratory (PNNL) in Washington State.
   doc_url: https://nwchemgit.github.io/
