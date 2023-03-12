@@ -7,13 +7,7 @@ package:
 source:
   url: https://github.com/nwchemgit/nwchem/archive/refs/tags/v{{ version }}-release.tar.gz
   sha256: 321c57a1994fd12546cb0d5f86c3bd8bd305d4420a9d7d416f3d765c428cdae4
-  patches:
-    - depend.patch
-    - make_config.patch
-    - python10.patch
-    - osx_arm64.patch
-    - earlyexit.patch
-
+  
 build:
   number: 0
   skip: true  # [win]
