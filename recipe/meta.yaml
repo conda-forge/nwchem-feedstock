@@ -16,7 +16,10 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
+    - python
+    - cross-python_{{ target_platform }}   
     - make
+    - gnuconfig
   host:
     - {{ mpi }}
     - openblas
