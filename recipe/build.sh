@@ -30,7 +30,7 @@ else
 fi
 
 
-export NWCHEM_MODULES="all python"
+export NWCHEM_MODULES="all python gwmol"
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
@@ -75,6 +75,7 @@ cp -r "$NWCHEM_TOP"/bin/$TARGET/* "$PREFIX"/bin
 cp -r "$NWCHEM_TOP"/lib/$TARGET/* "$PREFIX"/lib
 # cp -r "$NWCHEM_TOP"/include/$TARGET/* "$PREFIX"/include
 cp -r "$NWCHEM_TOP"/src/basis/libraries "$PREFIX"/share/nwchem/
+cp -r "$NWCHEM_TOP"/src/basis/libraries.bse "$PREFIX"/share/nwchem/
 cp -r "$NWCHEM_TOP"/src/data "$PREFIX"/share/nwchem/
 cp -r "$NWCHEM_TOP"/src/nwpw/libraryps "$PREFIX"/share/nwchem/
 
