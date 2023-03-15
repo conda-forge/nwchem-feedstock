@@ -9,14 +9,17 @@ source:
   sha256: 321c57a1994fd12546cb0d5f86c3bd8bd305d4420a9d7d416f3d765c428cdae4
   
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
+    - python
+    - cross-python_{{ target_platform }}   
     - make
+    - gnuconfig
   host:
     - {{ mpi }}
     - openblas
