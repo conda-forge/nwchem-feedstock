@@ -65,11 +65,10 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   export OMPI_FC="$FC"
   export OPAL_PREFIX="$PREFIX"
 fi
-echo LOCAL_CC $LOCAL_CC `which $LOCAL_CC`
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
-#make DEPEND_CC=${LOCAL_CC} CC=${CC} _CC=${CC} 64_to_32 
-make DEPEND_CC=${LOCAL_CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
+#make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
+make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
 
 #=================================================
 #=Install=NWChem
