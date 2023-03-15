@@ -35,7 +35,8 @@ fi
 export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
-
+# disable native CPU optimizations
+export USE_HWOPT=n
 #export PYTHONHOME="$PREFIX"
 #export PYTHONPATH="./:$NWCHEM_TOP/contrib/python/"
 #export PYTHONVERSION="2.7"
