@@ -30,9 +30,9 @@ else
 fi
 
 
-export NWCHEM_MODULES="all python gwmol"
+#export NWCHEM_MODULES="all python gwmol"
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
+export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 
@@ -65,12 +65,8 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   export OMPI_FC="$FC"
   export OPAL_PREFIX="$PREFIX"
 fi
-if [[ -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
-    LOCAL_CC=gcc
-else
-    LOCAL_CC=clang
-fi
-make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${LOCAL_CC} nwchem_config
+echo LOCAL_CC $LOCAL_CC `which $LOCAL_CC`
+make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 #make DEPEND_CC=${LOCAL_CC} CC=${CC} _CC=${CC} 64_to_32 
 make DEPEND_CC=${LOCAL_CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
