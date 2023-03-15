@@ -69,8 +69,14 @@ fi
 make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
 #make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
-make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
-
+export USE_FPICF=1
+make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAGS_FORGA="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
+if [[ "$?" != 0 ]]; then
+    echo '*** tools/build/config.log *** '
+    tail -3000 $SRC_DIR/src/tools/build/config.log
+    echo '*** tools/build/comex/config.log *** '
+    tail -3000 $SRC_DIR/src/tools/build/comex/config.log
+fi
 #=================================================
 #=Install=NWChem
 #=================================================
