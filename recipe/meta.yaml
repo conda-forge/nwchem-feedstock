@@ -71,6 +71,9 @@ test:
     - QA/tests/h2o2-response-uhf-damping
     - QA/tests/h2o2-prop-notrans
     - QA/tests/ch3radical_unrot
+    - QA/tests/localize-ibo-aa
+    - QA/tests/x2c-h2se
+    - QA/tests/hg-1e-hfc-x2c
   requires:
     - perl
 
