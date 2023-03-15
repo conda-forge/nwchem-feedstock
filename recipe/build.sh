@@ -30,9 +30,9 @@ else
 fi
 
 
-export NWCHEM_MODULES="all python gwmol"
+#export NWCHEM_MODULES="all python gwmol"
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation"
+export NWCHEM_MODULES="nwdft driver solvation"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
 # disable native CPU optimizations
@@ -70,7 +70,7 @@ make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_c
 cat ${SRC_DIR}/src/config/nwchem_config.h
 #make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
 export USE_FPICF=1
-mkdir -p ${SRC_DIR}/tools/install/lib || true
+mkdir -p ${SRC_DIR}/tools/install/lib ${SRC_DIR}/tools/install/include || true
 make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAGS_FORGA="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAG_INT="-fdefault-integer-8"
 if [[ "$?" != 0 ]]; then
     echo '%%%% tools/build/config.log %%%%%'
