@@ -30,17 +30,14 @@ else
 fi
 
 
-#export NWCHEM_MODULES="all python gwmol"
+export NWCHEM_MODULES="all python gwmol"
 #faster build
-export NWCHEM_MODULES="nwdft driver solvation"
+#export NWCHEM_MODULES="nwdft driver solvation"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
+#export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n
-#export PYTHONHOME="$PREFIX"
-#export PYTHONPATH="./:$NWCHEM_TOP/contrib/python/"
-#export PYTHONVERSION="2.7"
-#export USE_PYTHONCONFIG=y
 
 export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
 export BLAS_SIZE=4
@@ -50,6 +47,9 @@ export LAPACK_LIB="$BLASOPT"
 
 export SCALAPACK_SIZE=4
 export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
+
+export LIBXC_INCLUDE="$PREFIX/include"
+export LIBXC_LIB="$PREFIX/lib"
 
 #=================================================
 #=Make=NWChem

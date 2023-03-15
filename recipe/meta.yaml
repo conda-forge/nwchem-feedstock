@@ -28,6 +28,7 @@ requirements:
     - openblas
     - scalapack
     - python
+    - libxc
     - openssh
   run:
     - {{ mpi }}
