@@ -11,6 +11,7 @@ source:
   sha256: f756073ab3206571a22ec26cc95dac674fed9c4c959f444b8a97df059ffa3456
   patches:
     - ibo32_source.patch
+    - strip_compiler.patch
   
 build:
   number: 2
@@ -18,6 +19,7 @@ build:
 
 requirements:
   build:
+    - cmake >=3.21
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - {{ compiler('cxx') }}
