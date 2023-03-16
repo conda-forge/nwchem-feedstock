@@ -1,27 +1,36 @@
 {% set name = "nwchem" %}
 {% set version = "7.2.0" %}
+{% set hash = "d0d141fd" %}
+{% set date = "2023-03-10" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/nwchemgit/nwchem/archive/refs/tags/v{{ version }}-release.tar.gz
-  sha256: 321c57a1994fd12546cb0d5f86c3bd8bd305d4420a9d7d416f3d765c428cdae4
+  url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
+  sha256: f756073ab3206571a22ec26cc95dac674fed9c4c959f444b8a97df059ffa3456
+  patches:
+    - ibo32_source.patch
   
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
+    - python  # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - make
+    - gnuconfig
+    - {{ mpi }}
   host:
     - {{ mpi }}
     - openblas
     - scalapack
     - python
+    - libxc
     - openssh
   run:
     - {{ mpi }}
@@ -63,6 +72,11 @@ test:
     - QA/tests/h2o2-response-uhf
     - QA/tests/h2o2-response-uhf-damping
     - QA/tests/h2o2-prop-notrans
+    - QA/tests/ch3radical_unrot
+    - QA/tests/localize-ibo-aa
+    - QA/tests/x2c-h2se
+    - QA/tests/hg-1e-hfc-x2c
+    - QA/tests/dft_he2p_wb97
   requires:
     - perl
 

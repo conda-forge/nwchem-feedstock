@@ -1,0 +1,13 @@
+diff --git a/src/property/ibo_localization.F b/src/property/ibo_localization.F
+index db5b52c44b..59b1f5af90 100644
+--- a/src/property/ibo_localization.F
++++ b/src/property/ibo_localization.F
+@@ -946,7 +946,7 @@ c     -----------------------------------------------------------------
+         
+         call ga_get(g_a, 1, m, 1, n, dbl_mb(k_a), m)
+ 
+-        call dgesvd('s','s',m,n,dbl_mb(k_a),m,values,
++        call ygesvd('s','s',m,n,dbl_mb(k_a),m,values,
+      &    dbl_mb(k_u),m,dbl_mb(k_vt),nsing,
+      &    dbl_mb(k_work),lwork,info)
+            

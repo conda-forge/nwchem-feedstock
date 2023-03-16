@@ -30,16 +30,14 @@ else
 fi
 
 
-export NWCHEM_MODULES="all python"
+export NWCHEM_MODULES="all python gwmol"
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation hessian property vib"
+#export NWCHEM_MODULES="nwdft driver solvation"
 export NWCHEM_LONG_PATHS=y
 export USE_NOFSCHECK=Y
-
-#export PYTHONHOME="$PREFIX"
-#export PYTHONPATH="./:$NWCHEM_TOP/contrib/python/"
-#export PYTHONVERSION="2.7"
-#export USE_PYTHONCONFIG=y
+#export USE_NOIO=Y
+# disable native CPU optimizations
+export USE_HWOPT=n
 
 export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
 export BLAS_SIZE=4
@@ -50,6 +48,9 @@ export LAPACK_LIB="$BLASOPT"
 export SCALAPACK_SIZE=4
 export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 
+export LIBXC_INCLUDE="$PREFIX/include"
+export LIBXC_LIB="$PREFIX/lib"
+
 #=================================================
 #=Make=NWChem
 #=================================================
@@ -59,11 +60,24 @@ cd "$NWCHEM_TOP"/src
 ${CC} -v
 ${FC} -v
 #
-make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC} nwchem_config
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+  export OMPI_CC="$CC"
+  export OMPI_CXX="$CXX"
+  export OMPI_FC="$FC"
+  export OPAL_PREFIX="$PREFIX"
+fi
+make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_config
 cat ${SRC_DIR}/src/config/nwchem_config.h
-make DEPEND_CC=${CC} CC=${CC} _CC=${CC} 64_to_32 
-make DEPEND_CC=${CC} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} V=1 CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" 
-
+#make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
+export USE_FPICF=1
+mkdir -p ${SRC_DIR}/tools/install/lib ${SRC_DIR}/tools/install/include || true
+make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAGS_FORGA="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAG_INT="-fdefault-integer-8"
+if [[ "$?" != 0 ]]; then
+    echo '%%%% tools/build/config.log %%%%%'
+    cat $SRC_DIR/src/tools/build/config.log
+    echo '%%%% tools/build/comex/config.log %%%%%'
+    cat $SRC_DIR/src/tools/build/comex/config.log
+fi
 #=================================================
 #=Install=NWChem
 #=================================================
@@ -75,6 +89,7 @@ cp -r "$NWCHEM_TOP"/bin/$TARGET/* "$PREFIX"/bin
 cp -r "$NWCHEM_TOP"/lib/$TARGET/* "$PREFIX"/lib
 # cp -r "$NWCHEM_TOP"/include/$TARGET/* "$PREFIX"/include
 cp -r "$NWCHEM_TOP"/src/basis/libraries "$PREFIX"/share/nwchem/
+cp -r "$NWCHEM_TOP"/src/basis/libraries.bse "$PREFIX"/share/nwchem/
 cp -r "$NWCHEM_TOP"/src/data "$PREFIX"/share/nwchem/
 cp -r "$NWCHEM_TOP"/src/nwpw/libraryps "$PREFIX"/share/nwchem/
 
