@@ -16,7 +16,7 @@ ln -s $PREFIX/share/nwchem/libraries/ $SRC_DIR/src/basis/libraries
 # not sure this env var actually has any effect
 # (the tests may be looking for the libraries at a relative location)
 export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
-
+unset USE_SIMINT
 
 cd $NWCHEM_TOP/QA
 ./doafewqmtests.mpi 2 1 | tee tests.log

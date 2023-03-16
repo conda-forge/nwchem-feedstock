@@ -51,6 +51,18 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 export LIBXC_INCLUDE="$PREFIX/include"
 export LIBXC_LIB="$PREFIX/lib"
 
+# https://github.com/simint-chem/simint-generator
+export USE_SIMINT=1
+build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
+echo "build_arch is $build_arch"
+if [[ "$build_arch" == "x86_64" ]]; then
+    export SIMINT_VECTOR=AVX2
+elif [[ "$build_arch" == "x86_64" ]]; then
+    export SIMINT_VECTOR=scalar
+else
+    export SIMINT_VECTOR=scalar
+fi
+echo "SIMINT_VECTOR is $SIMINT_VECTOR"
 #=================================================
 #=Make=NWChem
 #=================================================
