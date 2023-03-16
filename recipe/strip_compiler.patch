@@ -1,3 +1,25 @@
+diff --git a/src/config/makefile.h b/src/config/makefile.h
+index 112ea0db2c..afeaf08ca8 100644
+--- a/src/config/makefile.h
++++ b/src/config/makefile.h
+@@ -419,7 +419,7 @@ BUILDING_PYTHON = $(filter $(NWSUBDIRS),python)
+ # Establish some required defaults which may need overriding
+ # for some machines
+ 
+-SHELL = /bin/sh
++SHELL = /bin/bash
+ ARFLAGS = r
+ FDEBUG = -g
+ CDEBUG = -g
+@@ -1502,7 +1502,7 @@ ifeq ($(TARGET),$(findstring $(TARGET),LINUX CYGNUS CYGWIN))
+ # Linux or Cygwin under Windows running on an x86 using g77
+ #
+     NICE = nice -n 2
+-    SHELL := $(NICE) /bin/sh
++    SHELL := $(NICE) /bin/bash
+ 
+     ifeq ($(BLASOPT),)
+         CORE_SUBDIRS_EXTRA += blas
 diff --git a/src/config/strip_compiler.sh b/src/config/strip_compiler.sh
 index d43b1dd3f3..6378bb601e 100755
 --- a/src/config/strip_compiler.sh
@@ -14,3 +36,4 @@ index d43b1dd3f3..6378bb601e 100755
 +else
 +    echo $(basename -- $1 | cut -d \- -f 1 | sed 's/[0-9]*//g')
 +fi
+ 
