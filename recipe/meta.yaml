@@ -9,6 +9,8 @@ package:
 source:
   url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
   sha256: f756073ab3206571a22ec26cc95dac674fed9c4c959f444b8a97df059ffa3456
+  patches:
+    - ibo32_source.patch
   
 build:
   number: 1
