@@ -23,4 +23,7 @@ cd $NWCHEM_TOP/QA
 echo " %%%% h2o_opt.out %%%%"
 tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
 echo " %%%% end of h2o_opt.out %%%%"
+echo " %%%% localize-ibo-aa.out %%%%"
+cat $NWCHEM_TOP/QA/testoutputs/localize-ibo-aa.out
+echo " %%%% end of localize-ibo-aa.out %%%%"
 
