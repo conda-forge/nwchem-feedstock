@@ -12,6 +12,7 @@ source:
   patches:
     - ibo32_source.patch
     - strip_compiler.patch
+    - build_simint.patch
   
 build:
   number: 2
