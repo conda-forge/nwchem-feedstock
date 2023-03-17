@@ -13,6 +13,7 @@ source:
     - ibo32_source.patch
     - strip_compiler.patch
     - build_simint.patch
+    - earlyexit.patch
   
 build:
   number: 2
