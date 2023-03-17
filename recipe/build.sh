@@ -33,9 +33,7 @@ fi
 export NWCHEM_MODULES="all python gwmol"
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation"
-export NWCHEM_LONG_PATHS=y
-export USE_NOFSCHECK=Y
-#export USE_NOIO=Y
+export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n
 
@@ -51,6 +49,19 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 export LIBXC_INCLUDE="$PREFIX/include"
 export LIBXC_LIB="$PREFIX/lib"
 
+# https://github.com/simint-chem/simint-generator
+export USE_SIMINT=1
+export SIMINT_MAXAM=5
+build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
+echo "build_arch is $build_arch"
+if [[ "$build_arch" == "x86_64" ]]; then
+    export SIMINT_VECTOR=AVX2
+elif [[ "$build_arch" == "x86_64" ]]; then
+    export SIMINT_VECTOR=scalar
+else
+    export SIMINT_VECTOR=scalar
+fi
+echo "SIMINT_VECTOR is $SIMINT_VECTOR"
 #=================================================
 #=Make=NWChem
 #=================================================
