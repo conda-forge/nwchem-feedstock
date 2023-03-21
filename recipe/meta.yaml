@@ -47,6 +47,7 @@ requirements:
     - make
     - gnuconfig
     - sed
+    - file
     - {{ mpi }}
   host:
     - {{ mpi }}
