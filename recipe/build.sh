@@ -29,7 +29,7 @@ else
     export NWCHEM_TARGET=MACX64
 fi
 
-export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]| sed --expression='s/_/-/g' )
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
 #export NWCHEM_MODULES="all python gwmol"
 #faster build
 export NWCHEM_MODULES="nwdft driver solvation"
