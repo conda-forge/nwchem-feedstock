@@ -30,9 +30,9 @@ else
 fi
 
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
-#export NWCHEM_MODULES="all python gwmol"
+export NWCHEM_MODULES="all python gwmol"
 #faster build
-export NWCHEM_MODULES="nwdft driver solvation"
+#export NWCHEM_MODULES="nwdft driver solvation"
 export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n
