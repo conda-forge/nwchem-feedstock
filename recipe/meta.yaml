@@ -28,7 +28,7 @@ source:
     - earlyexit.patch
   
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
   string: {{ build_string }}
 
