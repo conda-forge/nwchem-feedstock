@@ -8,13 +8,14 @@
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
+{% set build_string = "py{}_{}".format(environ.get('CONDA_PY', ''), build) %}
 {% set armci_prefix = "" %}
 {% else %}
 {% set armci_prefix = armci_network %}
+{% set build_string = "py{}_{}_{}".format(environ.get('CONDA_PY', ''), armci_prefix, build) %}
 {% endif %}
 
 
-{% set build_string = "py{}_{}_{}".format(environ.get('CONDA_PY', ''), armci_prefix, build) %}
 
 package:
   name: {{ name|lower }}
