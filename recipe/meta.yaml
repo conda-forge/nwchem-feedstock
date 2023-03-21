@@ -55,6 +55,8 @@ requirements:
     - libxc
     - openssh
   run:
+    script_env:
+      - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
     - {{ mpi }}
     - openblas
     - libopenblas
