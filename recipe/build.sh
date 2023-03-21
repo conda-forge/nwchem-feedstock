@@ -29,10 +29,10 @@ else
     export NWCHEM_TARGET=MACX64
 fi
 
-
-export NWCHEM_MODULES="all python gwmol"
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:] )
+#export NWCHEM_MODULES="all python gwmol"
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation"
+export NWCHEM_MODULES="nwdft driver solvation"
 export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n

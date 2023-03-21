@@ -2,6 +2,16 @@
 {% set version = "7.2.0" %}
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
+
+{% if armci_network != 'mpi-ts' %}
+{% set armci_prefix =  armci_network %}
+{% else %}
+{% set armci_prefix = "" %}
+# prioritize 'mpi-ts' variant via build number
+{% set build = build + 1000 %}
+{% endif %}
+string: "{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -18,6 +28,7 @@ source:
 build:
   number: 2
   skip: true  # [win]
+  string: {{ build_string }}
 
 requirements:
   build:
