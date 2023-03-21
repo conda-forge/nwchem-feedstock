@@ -3,15 +3,16 @@
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
 
-{% if armci_network != 'mpi-ts' %}
-{% set armci_prefix =  armci_network %}
 {% set build = 0 %}
+{% if armci_network != 'mpi_ts' %}
+{% set armci_prefix =  armci_network %}
 {% else %}
 {% set armci_prefix = "" %}
-# prioritize 'mpi-ts' variant via build number
+# prioritize 'mpi_ts' variant via build number
 {% set build = build + 1000 %}
 {% endif %}
-string: "{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+#{% build_string = "{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }} %}
+{% set build_string = "py{}_{}_{}".format(environ.get('CONDA_PY', ''), armci_prefix, build) %}
 
 package:
   name: {{ name|lower }}
@@ -41,6 +42,7 @@ requirements:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - make
     - gnuconfig
+    - sed
     - {{ mpi }}
   host:
     - {{ mpi }}
