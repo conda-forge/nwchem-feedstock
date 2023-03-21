@@ -19,6 +19,7 @@ export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 unset USE_SIMINT
 
 cd $NWCHEM_TOP/QA
+export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 ./doafewqmtests.mpi 2 1 | tee tests.log
 echo " %%%% h2o_opt.out %%%%"
 tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out

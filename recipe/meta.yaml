@@ -34,7 +34,8 @@ build:
   number: 3
   skip: true  # [win]
   string: {{ build_string }}
-
+  script_env:
+    - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 requirements:
   build:
     - cmake >=3.21
@@ -55,8 +56,6 @@ requirements:
     - libxc
     - openssh
   run:
-    script_env:
-      - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
     - {{ mpi }}
     - openblas
     - libopenblas
