@@ -5,6 +5,7 @@
 
 {% if armci_network != 'mpi-ts' %}
 {% set armci_prefix =  armci_network %}
+{% set build = 0 %}
 {% else %}
 {% set armci_prefix = "" %}
 # prioritize 'mpi-ts' variant via build number
