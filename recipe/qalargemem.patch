@@ -1,0 +1,34 @@
+diff --git a/QA/doafewqmtests.mpi b/QA/doafewqmtests.mpi
+index 497a05181a..a3bc6465b0 100755
+--- a/QA/doafewqmtests.mpi
++++ b/QA/doafewqmtests.mpi
+@@ -24,8 +24,6 @@ fi
+ ./runtests.mpi.unix procs $np cosmo_h2o_dft
+ ./runtests.mpi.unix procs $np pyqa3
+ #
+-./runtests.mpi.unix procs $np tddft_h2o
+-./runtests.mpi.unix procs $np tddft_n2+
+ ./runtests.mpi.unix procs $np tddft_ac_co
+ ./runtests.mpi.unix procs $np hi_zora_sf
+ ./runtests.mpi.unix procs $np ch3radical_unrot
+@@ -50,7 +48,6 @@ fi
+ #
+ #--- response tests
+ ./runtests.mpi.unix procs $np h2o-response
+-./runtests.mpi.unix procs $np h2o2-response
+ ./runtests.mpi.unix procs $np h2o2-response-uhf
+ ./runtests.mpi.unix procs $np h2o2-response-uhf-damping
+ ./runtests.mpi.unix procs $np h2o2-prop-notrans
+@@ -61,4 +58,11 @@ fi
+ #--- relativity tests
+ ./runtests.mpi.unix procs $np x2c-h2se
+ ./runtests.mpi.unix procs $np hg-1e-hfc-x2c
+-#
++# test requiring more than 64mb on /dev/shm
++let do_largemem=1
++if [[ "$ARMCI_NETWORK" == "MPI-PR" ]];then let do_largemem=0 ; fi
++if [[ "$do_largemem" == "1" ]]; then
++./runtests.mpi.unix procs $np tddft_h2o
++./runtests.mpi.unix procs $np tddft_n2+
++./runtests.mpi.unix procs $np h2o2-response
++fi
