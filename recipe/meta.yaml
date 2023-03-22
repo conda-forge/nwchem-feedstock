@@ -104,8 +104,6 @@ test:
     - QA/tests/dft_he2p_wb97
   requires:
     - perl
-  script_env:
-    - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 
 about:
   home: https://nwchemgit.github.io
