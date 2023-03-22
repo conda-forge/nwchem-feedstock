@@ -19,7 +19,8 @@ export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 unset USE_SIMINT
 
 cd $NWCHEM_TOP/QA
-export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
+cat doafewqmtests.mpi
+#export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 if [[ $(uname -s) == "Linux" ]]; then
     echo 'output of df -h /dev/shm' `df -h /dev/shm`
     mpirun -n 1 df -h /dev/shm || true

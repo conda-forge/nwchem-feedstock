@@ -1,5 +1,3 @@
-diff --git a/QA/doafewqmtests.mpi b/QA/doafewqmtests.mpi
-index 497a05181a..a3bc6465b0 100755
 --- a/QA/doafewqmtests.mpi
 +++ b/QA/doafewqmtests.mpi
 @@ -24,8 +24,6 @@ fi
