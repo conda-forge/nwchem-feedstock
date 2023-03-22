@@ -66,7 +66,6 @@ echo "SIMINT_VECTOR is $SIMINT_VECTOR"
 #=Make=NWChem
 #=================================================
 
-cat "$NWCHEM_TOP"/QA/doafewqmtests.mpi
 cd "$NWCHEM_TOP"/src
 # show compiler versions
 ${CC} -v
