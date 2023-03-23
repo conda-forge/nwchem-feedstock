@@ -2,6 +2,21 @@
 {% set version = "7.2.0" %}
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
+
+{% set armci_network = armci_network or 'mpi_ts' %}
+{% set build = 0 %}
+{% if armci_network  == 'mpi_ts' %}
+# prioritize 'nompi' variant via build number
+{% set build = build + 1000 %}
+{% set build_string = "py{}_{}".format(environ.get('CONDA_PY', ''), build) %}
+{% set armci_prefix = "" %}
+{% else %}
+{% set armci_prefix = armci_network %}
+{% set build_string = "py{}_{}_{}".format(environ.get('CONDA_PY', ''), armci_prefix, build) %}
+{% endif %}
+
+
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -14,11 +29,14 @@ source:
     - strip_compiler.patch
     - build_simint.patch
     - earlyexit.patch
+    - qalargemem.patch
   
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
-
+  string: {{ build_string }}
+  script_env:
+    - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 requirements:
   build:
     - cmake >=3.21
@@ -29,6 +47,8 @@ requirements:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - make
     - gnuconfig
+    - sed
+    - file
     - {{ mpi }}
   host:
     - {{ mpi }}
