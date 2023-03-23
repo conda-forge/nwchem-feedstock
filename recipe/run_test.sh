@@ -17,6 +17,9 @@ ln -s $PREFIX/share/nwchem/libraries/ $SRC_DIR/src/basis/libraries
 # (the tests may be looking for the libraries at a relative location)
 export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 unset USE_SIMINT
+# ARMCI_NETWORK is used in QAs
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 
 cd $NWCHEM_TOP/QA
 #export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
