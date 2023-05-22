@@ -32,7 +32,7 @@ source:
     - qalargemem.patch
   
 build:
-  number: 3
+  number: {{ build }} 
   skip: true  # [win]
   string: {{ build_string }}
   script_env:
