@@ -1,19 +1,17 @@
 {% set name = "nwchem" %}
 {% set version = "7.2.0" %}
 {% set hash = "d0d141fd" %}
-{% set date = "2023-03-10" %}
+{% set date = "2023-05-22" %}
 
 {% set armci_network = armci_network or 'mpi_ts' %}
-{% set build = 0 %}
+{% set build = 4 %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
-{% set build_string = "py{}_{}".format(environ.get('CONDA_PY', ''), build) %}
-{% set armci_prefix = "" %}
-{% else %}
-{% set armci_prefix = armci_network %}
-{% set build_string = "py{}_{}_{}".format(environ.get('CONDA_PY', ''), armci_prefix, build) %}
 {% endif %}
+{% set armci_prefix = armci_network %}
+{% set build_string = '{}_py{}h{}_{}'.format(armci_prefix, CONDA_PY, PKG_HASH, build) %}
+
 
 
 
