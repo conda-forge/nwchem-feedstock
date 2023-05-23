@@ -10,7 +10,6 @@
 {% set build = build + 1000 %}
 {% endif %}
 {% set armci_prefix = armci_network %}
-{% set build_string = '{}_py{}h{}_{}'.format(armci_prefix, CONDA_PY, PKG_HASH, build) %}
 
 
 
@@ -32,7 +31,7 @@ source:
 build:
   number: {{ build }} 
   skip: true  # [win]
-  string: {{ build_string }}
+  string: py{{ CONDA_PY }}-{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 requirements:
