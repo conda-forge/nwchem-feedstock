@@ -1,7 +1,7 @@
 {% set name = "nwchem" %}
 {% set version = "7.2.0" %}
 {% set hash = "d0d141fd" %}
-{% set date = "2023-05-22" %}
+{% set date = "2023-03-10" %}
 
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% set build = 4 %}
