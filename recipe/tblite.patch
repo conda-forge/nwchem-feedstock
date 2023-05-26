@@ -1,0 +1,32 @@
+diff --git a/src/libext/tblite/build_tblite_cmake.sh b/src/libext/tblite/build_tblite_cmake.sh
+index 0095f74f49..96dddd4262 100755
+--- a/src/libext/tblite/build_tblite_cmake.sh
++++ b/src/libext/tblite/build_tblite_cmake.sh
+@@ -82,6 +82,7 @@ if [[ -n ${FC} ]] &&   [[ ${FC} == ftn ]]; then
+ fi
+ 
+ FC_EXTRA=$(${NWCHEM_TOP}/src/config/strip_compiler.sh ${FC})
++echo FC_EXTRA is $FC_EXTRA
+ 
+ #Intel MPI
+ if [[  -z "$I_MPI_F90"   ]] ; then
+@@ -196,7 +197,9 @@ fi
+ if [[ ${FC} == nvfortran ]] || [[ ${FC} == pgf90 ]]; then
+   Fortran_FLAGS+="-Mbackslash -fast -tp host"
+ fi
+-
++if [ ! -z "${CONDA_BUILD_SYSROOT}" ]; then
++ Fortran_FLAGS+="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
++fi
+ if [[ -z "$USE_OPENMP" ]]; then
+   DOOPENMP=OFF
+ else
+@@ -218,6 +221,8 @@ fi
+ 
+ cd tblite
+ rm -rf _build
++#add PREFIX/lib to ldflags
++#export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
+ 
+ echo compiling TBlite stack with FC=$FC CC=$CC $CMAKE -B _build -DLAPACK_LIBRARIES="$BLASOPT" -DWITH_ILP64=$ilp64 -DWITH_OpenMP=$DOOPENMP -DCMAKE_INSTALL_PREFIX="../.." -DWITH_TESTS=OFF -DWITH_API=OFF -DWITH_APP=OFF -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_IGNORE_PATH="/usr/local" -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS"
+ 

@@ -4,7 +4,7 @@
 {% set date = "2023-03-10" %}
 
 {% set armci_network = armci_network or 'mpi_ts' %}
-{% set build = 4 %}
+{% set build = 5 %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
@@ -27,6 +27,7 @@ source:
     - build_simint.patch
     - earlyexit.patch
     - qalargemem.patch
+    - tblite.patch
   
 build:
   number: {{ build }} 
