@@ -24,7 +24,7 @@ diff --git a/src/config/strip_compiler.sh b/src/config/strip_compiler.sh
 index d43b1dd3f3..6378bb601e 100755
 --- a/src/config/strip_compiler.sh
 +++ b/src/config/strip_compiler.sh
-@@ -1,4 +1,11 @@
+@@ -1,4 +1,13 @@
  #/usr/bin/env bash
  #      ifeq ($(shell basename -- $(FC)| cut -d \- -f 1),nvfortran)
 -echo $(basename -- $1 | cut -d \- -f 1 | sed 's/[0-9]*//g')
@@ -33,6 +33,8 @@ index d43b1dd3f3..6378bb601e 100755
 +    echo $_FC
 +elif [[ "$1" == *cc* ]] && [[ ! -z $_CC ]]; then
 +    echo $_CC
++elif [[ "$1" == *gfortran* ]] ; then
++    echo gfortran
 +else
 +    echo $(basename -- $1 | cut -d \- -f 1 | sed 's/[0-9]*//g')
 +fi
