@@ -30,7 +30,7 @@ else
 fi
 
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
-export NWCHEM_MODULES="all python gwmol"
+export NWCHEM_MODULES="all python gwmol xtb"
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation"
 export USE_NOIO=Y
@@ -62,6 +62,8 @@ else
     export SIMINT_VECTOR=scalar
 fi
 echo "SIMINT_VECTOR is $SIMINT_VECTOR"
+# required for xtb module
+export USE_TBLITE=1
 #=================================================
 #=Make=NWChem
 #=================================================
