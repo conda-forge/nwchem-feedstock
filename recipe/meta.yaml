@@ -27,6 +27,7 @@ source:
     - build_simint.patch
     - earlyexit.patch
     - qalargemem.patch
+    - tblite.patch
   
 build:
   number: {{ build }} 
