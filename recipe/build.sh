@@ -32,13 +32,13 @@ fi
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
-if [[ "$build_arch" == "x86_64" ]]; then
+#if [[ "$build_arch" == "x86_64" ]]; then
     export NWCHEM_MODULES="all python gwmol xtb"
     # required for xtb module
     export USE_TBLITE=1
-else
-    export NWCHEM_MODULES="all python gwmol"
-fi
+#else
+#    export NWCHEM_MODULES="all python gwmol"
+#fi
 #faster build
 #export NWCHEM_MODULES="nwdft driver solvation"
 export USE_NOIO=Y
