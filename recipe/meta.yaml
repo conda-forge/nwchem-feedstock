@@ -55,6 +55,7 @@ requirements:
     - python
     - libxc
     - openssh
+    - plumed
   run:
     - {{ mpi }}
     - openblas

@@ -57,6 +57,7 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 export LIBXC_INCLUDE="$PREFIX/include"
 export LIBXC_LIB="$PREFIX/lib"
 
+export USE_PLUMED=1
 # https://github.com/simint-chem/simint-generator
 export USE_SIMINT=1
 export SIMINT_MAXAM=5
