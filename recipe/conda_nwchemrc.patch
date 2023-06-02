@@ -1,0 +1,14 @@
+diff --git a/src/util/util_nwchemrc.F b/src/util/util_nwchemrc.F
+index cabafa4c76..11a6abbfe4 100644
+--- a/src/util/util_nwchemrc.F
++++ b/src/util/util_nwchemrc.F
+@@ -113,6 +113,9 @@ c
+           nwchrc=home(1:inp_strlen(home))//'/.nwchemrc '
+         elseif (ipass.eq.3) then
+           nwchrc="/etc/nwchemrc"
++        else if (ipass.eq.4) then
++          call util_getenv('CONDA_PREFIX',home)
++          nwchrc=home(1:inp_strlen(home))//'/etc/default.nwchemrc '
+         else
+           return
+         endif
