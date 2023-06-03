@@ -1,5 +1,5 @@
 diff --git a/src/NWints/simint/libsimint_source/build_simint.sh b/src/NWints/simint/libsimint_source/build_simint.sh
-index eba6bcdaf8..91fe3bc4aa 100755
+index d518112ba6..4a7a83c64a 100755
 --- a/src/NWints/simint/libsimint_source/build_simint.sh
 +++ b/src/NWints/simint/libsimint_source/build_simint.sh
 @@ -145,18 +145,6 @@ mkdir -p build; cd build
@@ -60,7 +60,7 @@ index eba6bcdaf8..91fe3bc4aa 100755
  elif  [ ${FC} == xlf ] || [ ${FC} == xlf_r ] || [ ${FC} == xlf90 ]|| [ ${FC} == xlf90_r ]; then
      Fortran_FLAGS=" -qintsize=8 -qextname -qpreprocess"
  elif  [[ ${FC} == ifort || (${FC} == ftn && ${PE_ENV} == INTEL) ]]; then
-@@ -222,6 +228,7 @@ elif  [ ${FC} == frt ] || [ ${FC} == frtpx ] ; then
+@@ -222,12 +228,13 @@ elif  [ ${FC} == frt ] || [ ${FC} == frtpx ] ; then
      CC=/opt/FJSVxos/devkit/aarch64/bin/aarch64-linux-gnu-gcc
      CXX=/opt/FJSVxos/devkit/aarch64/bin/aarch64-linux-gnu-g++
  fi
@@ -68,3 +68,10 @@ index eba6bcdaf8..91fe3bc4aa 100755
  echo Fortran_FLAGS equal "$Fortran_FLAGS"
  FC="${FC}" CC="${CC}" CXX="${CXX}" $CMAKE \
   -DCMAKE_BUILD_TYPE="${SIMINT_BUILD_TYPE}" -DSIMINT_VECTOR=${VEC}  \
+  -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_FORTRAN=ON -DSIMINT_MAXAM=${SIMINT_MAXAM} -DSIMINT_MAXDER=${DERIV} \
+  -DENABLE_TESTS=OFF     -DSIMINT_STANDALONE=OFF   \
+- -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS" -DCMAKE_INSTALL_PREFIX=${SRC_HOME}/simint.l${SIMINT_MAXAM}_p${PERMUTE_SLOW}_d${DERIV}.install ../
++ -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS" -DCMAKE_INSTALL_PREFIX=${SRC_HOME}/simint.l${SIMINT_MAXAM}_p${PERMUTE_SLOW}_d${DERIV}.install -DCMAKE_VERBOSE_MAKEFILE=True ../
+ time -p make  -j4
+ make simint
+ if [[ (${FC} == ftn && ${PE_ENV} == CRAY) ]] ; then
