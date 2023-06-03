@@ -1,8 +1,26 @@
 diff --git a/src/NWints/simint/libsimint_source/build_simint.sh b/src/NWints/simint/libsimint_source/build_simint.sh
-index d518112ba6..4a7a83c64a 100755
+index d518112ba6..8267157d61 100755
 --- a/src/NWints/simint/libsimint_source/build_simint.sh
 +++ b/src/NWints/simint/libsimint_source/build_simint.sh
-@@ -145,18 +145,6 @@ mkdir -p build; cd build
+@@ -26,6 +26,7 @@ if  [ -z "$(command -v patch)" ]; then
+     exit 1
+ fi
+ UNAME_S=$(uname -s)
++arch=$(uname -m)
+ if [[ ${UNAME_S} == Linux ]]; then
+     CPU_FLAGS=$(cat /proc/cpuinfo | grep flags |tail -n 1)
+     CPU_FLAGS_2=$(cat /proc/cpuinfo | grep flags |tail -n 1)
+@@ -80,7 +81,8 @@ fi
+ SRC_HOME=`pwd`
+ DERIV=1
+ if [[  -z "${SIMINT_MAXAM}" ]]; then
+-    SIMINT_MAXAM=3
++#    SIMINT_MAXAM=3
++    SIMINT_MAXAM=2
+ fi
+ #PERMUTE_SLOW=1
+ PERMUTE_SLOW=${SIMINT_MAXAM}
+@@ -145,18 +147,6 @@ mkdir -p build; cd build
  if [[ -z "${SIMINT_BUILD_TYPE}" ]]; then
      SIMINT_BUILD_TYPE=Release
  fi
@@ -21,7 +39,7 @@ index d518112ba6..4a7a83c64a 100755
  if [[ -z "${CXX}" ]]; then
      #look for c++
      if  [ -z "$(command -v c++)" ]; then
-@@ -168,6 +156,21 @@ if [[ -z "${CXX}" ]]; then
+@@ -168,6 +158,21 @@ if [[ -z "${CXX}" ]]; then
  	CXX=c++
      fi
  fi    
@@ -43,7 +61,7 @@ index d518112ba6..4a7a83c64a 100755
  if [[ -z "${GENERATOR_PROCESSES}" ]]; then
      GENERATOR_PROCESSES=3
      #parallel processing broken for g++-10 and later (at least on macos)
-@@ -197,13 +200,16 @@ if [[ -z "${FC}" ]]; then
+@@ -197,13 +202,16 @@ if [[ -z "${FC}" ]]; then
      fi
  fi    
  FC_EXTRA=$(${NWCHEM_TOP}/src/config/strip_compiler.sh ${FC})
@@ -60,7 +78,7 @@ index d518112ba6..4a7a83c64a 100755
  elif  [ ${FC} == xlf ] || [ ${FC} == xlf_r ] || [ ${FC} == xlf90 ]|| [ ${FC} == xlf90_r ]; then
      Fortran_FLAGS=" -qintsize=8 -qextname -qpreprocess"
  elif  [[ ${FC} == ifort || (${FC} == ftn && ${PE_ENV} == INTEL) ]]; then
-@@ -222,12 +228,13 @@ elif  [ ${FC} == frt ] || [ ${FC} == frtpx ] ; then
+@@ -222,12 +230,13 @@ elif  [ ${FC} == frt ] || [ ${FC} == frtpx ] ; then
      CC=/opt/FJSVxos/devkit/aarch64/bin/aarch64-linux-gnu-gcc
      CXX=/opt/FJSVxos/devkit/aarch64/bin/aarch64-linux-gnu-g++
  fi
@@ -75,3 +93,17 @@ index d518112ba6..4a7a83c64a 100755
  time -p make  -j4
  make simint
  if [[ (${FC} == ftn && ${PE_ENV} == CRAY) ]] ; then
+@@ -238,7 +247,12 @@ cd ../..
+ echo ln -sf  simint.l${SIMINT_MAXAM}_p${PERMUTE_SLOW}_d${DERIV}.install simint_install
+ ln -sf  simint.l${SIMINT_MAXAM}_p${PERMUTE_SLOW}_d${DERIV}.install simint_install
+ cd simint_install/lib
+-strip --strip-debug libsimint.a
++if [[ "$arch" == "x86_64" ]]; then
++    strip --strip-debug libsimint.a
++else
++    file libsimint.a
++    file `find ../.. -name ostei_s_s_s_s.c.o`
++fi
+ ln -sf libsimint.a libnwc_simint.a
+ export SIMINT_HOME=${SRC_HOME}/simint.l${SIMINT_MAXAM}_p${PERMUTE_SLOW}_d${DERIV}.install
+ echo 'SIMINT library built with maximum angular momentum='${SIMINT_MAXAM}
