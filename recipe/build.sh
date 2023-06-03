@@ -36,7 +36,7 @@ echo "build_arch is $build_arch"
 # required for xtb module
 export USE_TBLITE=1
 #faster build
-export NWCHEM_MODULES="nwdft driver solvation"
+export NWCHEM_MODULES="nwdft driver solvation xtb"
 export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n
