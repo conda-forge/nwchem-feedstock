@@ -21,22 +21,6 @@ index 41a720ab36..3787824d2a 100755
  if [[ -z "$USE_OPENMP" ]]; then
    DOOPENMP=OFF
  else
-@@ -205,11 +208,13 @@ fi
- 
- cd tblite
- rm -rf _build
-+#add PREFIX/lib to ldflags
-+#export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
- 
- echo compiling TBlite stack with FC=$FC CC=$CC $CMAKE -B _build -DLAPACK_LIBRARIES="$BLASOPT" -DWITH_ILP64=$ilp64 -DWITH_OpenMP=$DOOPENMP -DCMAKE_INSTALL_PREFIX="../.." -DWITH_TESTS=OFF -DWITH_API=OFF -DWITH_APP=OFF -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_IGNORE_PATH="/usr/local" -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS"
- 
--FC=$FC CC=$CC $CMAKE -B _build -DLAPACK_LIBRARIES="$BLASOPT" -DWITH_ILP64=$ilp64 -DWITH_OpenMP=$DOOPENMP -DCMAKE_INSTALL_PREFIX="../.." -DWITH_TESTS=OFF -DWITH_API=OFF -DWITH_APP=OFF -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_IGNORE_PATH="/usr/local" -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS"
--$CMAKE --build _build --parallel 4
-+FC=$FC CC=$CC $CMAKE -B _build -DLAPACK_LIBRARIES="$BLASOPT" -DWITH_ILP64=$ilp64 -DWITH_OpenMP=$DOOPENMP -DCMAKE_INSTALL_PREFIX="../.." -DWITH_TESTS=OFF -DWITH_API=OFF -DWITH_APP=OFF -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_IGNORE_PATH="/usr/local" -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS" -DCMAKE_VERBOSE_MAKEFILE=True
-+$CMAKE --build _build --parallel 4 -v
- status=$?
- if [ $status -ne 0 ]; then
-     echo tblite compilation failed
 @@ -219,5 +224,15 @@ fi
  $CMAKE --install _build
  
