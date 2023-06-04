@@ -1,5 +1,5 @@
 diff --git a/src/libext/tblite/build_tblite_cmake.sh b/src/libext/tblite/build_tblite_cmake.sh
-index 0095f74f49..96dddd4262 100755
+index 41a720ab36..7d2ae3bdb9 100755
 --- a/src/libext/tblite/build_tblite_cmake.sh
 +++ b/src/libext/tblite/build_tblite_cmake.sh
 @@ -82,6 +82,7 @@ if [[ -n ${FC} ]] &&   [[ ${FC} == ftn ]]; then
@@ -21,12 +21,20 @@ index 0095f74f49..96dddd4262 100755
  if [[ -z "$USE_OPENMP" ]]; then
    DOOPENMP=OFF
  else
-@@ -218,6 +221,8 @@ fi
+@@ -219,5 +222,15 @@ fi
+ $CMAKE --install _build
  
- cd tblite
- rm -rf _build
-+#add PREFIX/lib to ldflags
-+#export BLASOPT="-L$PREFIX/lib -lopenblas -lpthread"
- 
- echo compiling TBlite stack with FC=$FC CC=$CC $CMAKE -B _build -DLAPACK_LIBRARIES="$BLASOPT" -DWITH_ILP64=$ilp64 -DWITH_OpenMP=$DOOPENMP -DCMAKE_INSTALL_PREFIX="../.." -DWITH_TESTS=OFF -DWITH_API=OFF -DWITH_APP=OFF -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_IGNORE_PATH="/usr/local" -DCMAKE_Fortran_FLAGS="$Fortran_FLAGS"
- 
+ cd ..
+-strip --strip-debug ../lib/libtblite.a
++if [ ! -z "${CONDA_TOOLCHAIN_HOST}" ]; then
++    arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
++else
++    arch=$(uname -m)
++fi
++if [[ "$arch" == "x86_64" ]]; then
++    strip --strip-debug ../lib/libtblite.a
++else
++    file ../lib/libtblite.a
++    file `find . -name "*gfn2*.o"`
++fi
+ ln -sf  ../lib/libtblite.a  ../lib/libnwc_tblite.a

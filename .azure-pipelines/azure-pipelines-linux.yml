@@ -40,6 +40,38 @@ jobs:
         CONFIG: linux_64_armci_networkmpi_tspython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_prpython3.10.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_prpython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_prpython3.11.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_prpython3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_prpython3.8.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_prpython3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_prpython3.9.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_prpython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_tspython3.10.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_tspython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_tspython3.11.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_tspython3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_tspython3.8.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_tspython3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_aarch64_armci_networkmpi_tspython3.9.____cpython:
+        CONFIG: linux_aarch64_armci_networkmpi_tspython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
 
   steps:
