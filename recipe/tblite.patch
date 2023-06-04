@@ -1,5 +1,5 @@
 diff --git a/src/libext/tblite/build_tblite_cmake.sh b/src/libext/tblite/build_tblite_cmake.sh
-index 41a720ab36..3787824d2a 100755
+index 41a720ab36..7d2ae3bdb9 100755
 --- a/src/libext/tblite/build_tblite_cmake.sh
 +++ b/src/libext/tblite/build_tblite_cmake.sh
 @@ -82,6 +82,7 @@ if [[ -n ${FC} ]] &&   [[ ${FC} == ftn ]]; then
@@ -21,7 +21,7 @@ index 41a720ab36..3787824d2a 100755
  if [[ -z "$USE_OPENMP" ]]; then
    DOOPENMP=OFF
  else
-@@ -219,5 +224,15 @@ fi
+@@ -219,5 +222,15 @@ fi
  $CMAKE --install _build
  
  cd ..
