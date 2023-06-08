@@ -54,7 +54,7 @@ export LIBXC_INCLUDE="$PREFIX/include"
 export LIBXC_LIB="$PREFIX/lib"
 
 if [[ "$build_arch" == "x86_64" ]]; then
-    export USE_PLUMED=1
+    export BUILD_PLUMED=1
 fi
 # https://github.com/simint-chem/simint-generator
 export USE_SIMINT=1
