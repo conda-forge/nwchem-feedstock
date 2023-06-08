@@ -4,7 +4,7 @@
 {% set date = "2023-03-10" %}
 
 {% set armci_network = armci_network or 'mpi_ts' %}
-{% set build = 8 %}
+{% set build = 9 %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
