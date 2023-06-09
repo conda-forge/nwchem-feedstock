@@ -30,7 +30,7 @@ else
 fi
 
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
-if [[ $openmp == 'y' ]]; then
+if [[ $openmp == 'yes' ]]; then
     export USE_OPENMP=y
 fi
 echo "openmp is equal to " $openmp
