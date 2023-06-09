@@ -4,3 +4,7 @@ armci_network:
 
 mpi:
   - openmpi
+
+openmp:
+  - yes
+  - no

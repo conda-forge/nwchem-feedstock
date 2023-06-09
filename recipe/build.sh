@@ -30,6 +30,11 @@ else
 fi
 
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+if [[ $openmp == 'y' ]]; then
+    export USE_OPENMP=y
+fi
+echo "openmp is equal to " $openmp
+echo "USE_OPENMP is equal to " $USE_OPENMP
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
 export NWCHEM_MODULES="all python gwmol xtb"
