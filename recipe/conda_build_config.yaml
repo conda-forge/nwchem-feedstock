@@ -6,5 +6,5 @@ mpi:
   - openmpi
 
 openmp:
-  - yes
+  - yes [not (osx and x86_64)]
   - no
