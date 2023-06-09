@@ -4,7 +4,7 @@
 {% set date = "2023-03-10" %}
 
 {% set armci_network = armci_network or 'mpi_ts' %}
-{% set build = 8 %}
+{% set build = 9 %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
@@ -29,6 +29,7 @@ source:
     - qalargemem.patch
     - tblite.patch
     - conda_nwchemrc.patch
+    - plumed.patch
   
 build:
   number: {{ build }} 
@@ -56,14 +57,14 @@ requirements:
     - python
     - libxc
     - openssh
-    - plumed  # [not arm64]
+    - plumed  # [not (linux64 or osx)]
   run:
     - {{ mpi }}
     - openblas
     - libopenblas
     - scalapack
     - python
-    - plumed  # [not arm64]
+    - plumed  # [not (linux64 or osx)]
 
 test:
     # note: test files are included in the conda package
