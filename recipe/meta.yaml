@@ -56,14 +56,14 @@ requirements:
     - python
     - libxc
     - openssh
-    - plumed  # [not arm64]
+    - plumed  # [not linux]
   run:
     - {{ mpi }}
     - openblas
     - libopenblas
     - scalapack
     - python
-    - plumed  # [not arm64]
+    - plumed  # [not linux]
 
 test:
     # note: test files are included in the conda package
