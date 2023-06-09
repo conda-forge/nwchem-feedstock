@@ -8,77 +8,77 @@ jobs:
     vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_armci_networkmpi_prpython3.10.____cpython:
-        CONFIG: osx_64_armci_networkmpi_prpython3.10.____cpython
+      osx_64_armci_networkmpi_propenmpnopython3.10.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpnopython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_prpython3.11.____cpython:
-        CONFIG: osx_64_armci_networkmpi_prpython3.11.____cpython
+      osx_64_armci_networkmpi_propenmpnopython3.11.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpnopython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_prpython3.8.____cpython:
-        CONFIG: osx_64_armci_networkmpi_prpython3.8.____cpython
+      osx_64_armci_networkmpi_propenmpnopython3.8.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpnopython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_prpython3.9.____cpython:
-        CONFIG: osx_64_armci_networkmpi_prpython3.9.____cpython
+      osx_64_armci_networkmpi_propenmpnopython3.9.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpnopython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_tspython3.10.____cpython:
-        CONFIG: osx_64_armci_networkmpi_tspython3.10.____cpython
+      osx_64_armci_networkmpi_propenmpyespython3.10.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpyespython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_tspython3.11.____cpython:
-        CONFIG: osx_64_armci_networkmpi_tspython3.11.____cpython
+      osx_64_armci_networkmpi_propenmpyespython3.11.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpyespython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_tspython3.8.____cpython:
-        CONFIG: osx_64_armci_networkmpi_tspython3.8.____cpython
+      osx_64_armci_networkmpi_propenmpyespython3.8.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpyespython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_armci_networkmpi_tspython3.9.____cpython:
-        CONFIG: osx_64_armci_networkmpi_tspython3.9.____cpython
+      osx_64_armci_networkmpi_propenmpyespython3.9.____cpython:
+        CONFIG: osx_64_armci_networkmpi_propenmpyespython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpnopython3.10.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpnopython3.10.____cpython
+      osx_64_armci_networkmpi_tsopenmpnopython3.10.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpnopython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpnopython3.11.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpnopython3.11.____cpython
+      osx_64_armci_networkmpi_tsopenmpnopython3.11.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpnopython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpnopython3.8.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpnopython3.8.____cpython
+      osx_64_armci_networkmpi_tsopenmpnopython3.8.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpnopython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpnopython3.9.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpnopython3.9.____cpython
+      osx_64_armci_networkmpi_tsopenmpnopython3.9.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpnopython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpyespython3.10.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpyespython3.10.____cpython
+      osx_64_armci_networkmpi_tsopenmpyespython3.10.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpyespython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpyespython3.11.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpyespython3.11.____cpython
+      osx_64_armci_networkmpi_tsopenmpyespython3.11.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpyespython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpyespython3.8.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpyespython3.8.____cpython
+      osx_64_armci_networkmpi_tsopenmpyespython3.8.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpyespython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_propenmpyespython3.9.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_propenmpyespython3.9.____cpython
+      osx_64_armci_networkmpi_tsopenmpyespython3.9.____cpython:
+        CONFIG: osx_64_armci_networkmpi_tsopenmpyespython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpnopython3.10.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpnopython3.10.____cpython
+      osx_arm64_armci_networkmpi_prpython3.10.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_prpython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpnopython3.11.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpnopython3.11.____cpython
+      osx_arm64_armci_networkmpi_prpython3.11.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_prpython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpnopython3.8.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpnopython3.8.____cpython
+      osx_arm64_armci_networkmpi_prpython3.8.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_prpython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpnopython3.9.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpnopython3.9.____cpython
+      osx_arm64_armci_networkmpi_prpython3.9.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_prpython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpyespython3.10.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpyespython3.10.____cpython
+      osx_arm64_armci_networkmpi_tspython3.10.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_tspython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpyespython3.11.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpyespython3.11.____cpython
+      osx_arm64_armci_networkmpi_tspython3.11.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_tspython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpyespython3.8.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpyespython3.8.____cpython
+      osx_arm64_armci_networkmpi_tspython3.8.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_tspython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_armci_networkmpi_tsopenmpyespython3.9.____cpython:
-        CONFIG: osx_arm64_armci_networkmpi_tsopenmpyespython3.9.____cpython
+      osx_arm64_armci_networkmpi_tspython3.9.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_tspython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
     maxParallel: 21
   timeoutInMinutes: 360
