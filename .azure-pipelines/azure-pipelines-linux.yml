@@ -136,7 +136,7 @@ jobs:
         CONFIG: linux_aarch64_armci_networkmpi_tsopenmpyespython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-    maxParallel: 25
+    maxParallel: 29
   timeoutInMinutes: 360
 
   steps:

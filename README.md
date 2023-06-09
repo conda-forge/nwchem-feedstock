@@ -258,115 +258,59 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpnopython3.10.____cpython</td>
+              <td>osx_64_armci_networkmpi_prpython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpnopython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_prpython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpnopython3.11.____cpython</td>
+              <td>osx_64_armci_networkmpi_prpython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpnopython3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_prpython3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpnopython3.8.____cpython</td>
+              <td>osx_64_armci_networkmpi_prpython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpnopython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_prpython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpnopython3.9.____cpython</td>
+              <td>osx_64_armci_networkmpi_prpython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpnopython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_prpython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpyespython3.10.____cpython</td>
+              <td>osx_64_armci_networkmpi_tspython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpyespython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tspython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpyespython3.11.____cpython</td>
+              <td>osx_64_armci_networkmpi_tspython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpyespython3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tspython3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpyespython3.8.____cpython</td>
+              <td>osx_64_armci_networkmpi_tspython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpyespython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tspython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_armci_networkmpi_propenmpyespython3.9.____cpython</td>
+              <td>osx_64_armci_networkmpi_tspython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_propenmpyespython3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpnopython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpnopython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpnopython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpnopython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpnopython3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpnopython3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpnopython3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpnopython3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpyespython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpyespython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpyespython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpyespython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpyespython3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpyespython3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_armci_networkmpi_tsopenmpyespython3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12742&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tsopenmpyespython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nwchem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_armci_networkmpi_tspython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
