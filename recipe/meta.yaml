@@ -3,8 +3,15 @@
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
 
+{% set build = 10 %}
+{% set openmp = openmp or 'n' %}
+{% if openmp  == 'y' %}
+{% set build = build + 10 %}
+{% set openmp_prefix = 'openmp' %}
+{% else %}
+{% set openmp_prefix = 'noopenmp' %}
+{% endif %}
 {% set armci_network = armci_network or 'mpi_ts' %}
-{% set build = 9 %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
 {% set build = build + 1000 %}
@@ -34,7 +41,7 @@ source:
 build:
   number: {{ build }} 
   skip: true  # [win]
-  string: py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
+  string: py{{ CONDA_PY }}_{{ openmp_prefix }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 requirements:
@@ -50,6 +57,8 @@ requirements:
     - sed
     - file
     - {{ mpi }}
+    - libgomp  # [linux]
+    - llvm-openmp  # [osx]
   host:
     - {{ mpi }}
     - openblas
@@ -58,6 +67,8 @@ requirements:
     - libxc
     - openssh
     - plumed  # [not (linux64 or osx)]
+    - libgomp  # [linux]
+    - llvm-openmp  # [osx]
   run:
     - {{ mpi }}
     - openblas
@@ -65,6 +76,8 @@ requirements:
     - scalapack
     - python
     - plumed  # [not (linux64 or osx)]
+    - libgomp  # [linux]
+    - llvm-openmp  # [osx]
 
 test:
     # note: test files are included in the conda package

@@ -18,6 +18,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '12'
+llvm_openmp:
+- '15'
 macos_machine:
 - arm64-apple-darwin20.0.0
 mpi:
@@ -26,6 +28,8 @@ mpich:
 - '4'
 openblas:
 - 0.3.*
+openmp:
+- 'no'
 openmpi:
 - '4'
 perl:
