@@ -3,9 +3,9 @@
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
 
-{% set build = 10 %}
+{% set build = 11 %}
 {% set openmp = openmp or 'n' %}
-{% if openmp  == 'y' %}
+{% if openmp  == 'yes' %}
 {% set build = build + 10 %}
 {% set openmp_prefix = 'openmp' %}
 {% else %}
