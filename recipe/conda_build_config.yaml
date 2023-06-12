@@ -6,7 +6,8 @@ mpi:
   - openmpi
 
 c_compiler:
-  - gcc
+  - gcc                        # [linux]
+  - clang                      # [osx]
 c_compiler_version:
   - 12                         # [linux]
   - 15                         # [osx]
