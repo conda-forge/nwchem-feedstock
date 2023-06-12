@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 armci_network:
 - mpi_pr
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
 - '15'
 channel_sources:
