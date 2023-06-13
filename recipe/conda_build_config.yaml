@@ -5,6 +5,13 @@ armci_network:
 mpi:
   - openmpi
 
-openmp:
-  - yes
-  - no
+c_compiler:
+  - gcc                        # [linux]
+  - clang                      # [osx]
+c_compiler_version:
+  - 12                         # [linux]
+  - 15                         # [osx]
+fortran_compiler:
+  - gfortran
+fortran_compiler_version:
+  - 12
