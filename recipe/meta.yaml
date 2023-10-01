@@ -3,7 +3,7 @@
 {% set hash = "d0d141fd" %}
 {% set date = "2023-03-10" %}
 
-{% set build = 12 %}
+{% set build = 13 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
