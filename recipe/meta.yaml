@@ -26,6 +26,7 @@ source:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite.patch
+    - plumed.patch
   
 build:
   number: {{ build }} 
