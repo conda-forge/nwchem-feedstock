@@ -76,20 +76,3 @@ index 41a720ab36..7d2ae3bdb9 100755
  $CMAKE --build _build --parallel 4
  status=$?
  if [ $status -ne 0 ]; then
-@@ -219,5 +243,15 @@
- $CMAKE --install _build
- 
- cd ..
--strip --strip-debug ../lib/libtblite.a
-+
-+if [ ! -z "${CONDA_TOOLCHAIN_HOST}" ]; then
-+    arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
-+else
-+    arch=$(uname -m)
-+fi
-+if [[ $(uname -s) == "Linux" ]]; then
-+    if [[ "$arch" == "x86_64" ]]; then
-+	strip --strip-debug ../lib/libtblite.a
-+    fi
-+fi
- ln -sf  ../lib/libtblite.a  ../lib/libnwc_tblite.a

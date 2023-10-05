@@ -25,6 +25,7 @@ source:
     - earlyexit.patch
     - qalargemem.patch
     - conda_nwchemrc.patch
+    - tblite.patch
   
 build:
   number: {{ build }} 
