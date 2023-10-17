@@ -28,6 +28,7 @@ source:
     - tblite.patch
     - plumed.patch
     - nwchem721_output.patch
+    - python312.patch
   
 build:
   number: {{ build }} 
