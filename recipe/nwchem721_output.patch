@@ -1,0 +1,44 @@
+diff --git a/src/config/makefile.h b/src/config/makefile.h
+index ec4f28e86a..ecd3c11445 100644
+--- a/src/config/makefile.h
++++ b/src/config/makefile.h
+@@ -19,7 +19,7 @@
+ # For development tree 
+ #RELEASE := 
+ # For current release tree
+-RELEASE := 7.2.0
++RELEASE := 7.2.1
+ 
+ #
+ ifndef NWCHEM_TOP
+diff --git a/src/nwchem.F b/src/nwchem.F
+index 20b2ae6740..e3bfbda6fd 100644
+--- a/src/nwchem.F
++++ b/src/nwchem.F
+@@ -30,7 +30,7 @@ program nwchem
+ c  $Id$
+ c
+ c  ======================================================================================================
+-C> \mainpage Northwest Computational Chemistry Package (NWChem) 7.2.0
++C> \mainpage Northwest Computational Chemistry Package (NWChem) 7.2.1
+ C>
+ C> NWChem is an open-source computational chemistry package distributed under the terms of
+ C> the Educational Community License (ECL) 2.0
+@@ -470,7 +470,7 @@ subroutine nwchem_banner(input_filename, rtdb_name, ostartup,
+       write(LuOut,*)
+       write(LuOut,*)
+       call util_print_centered(LuOut,
+-     $     'Northwest Computational Chemistry Package (NWChem) 7.2.0',
++     $     'Northwest Computational Chemistry Package (NWChem) 7.2.1',
+      $     40, .true.)
+       write(LuOut,*)
+       write(LuOut,*)
+@@ -566,7 +566,7 @@ subroutine nwchem_banner(input_filename, rtdb_name, ostartup,
+ C  Print version information to ecce.out file
+ C
+       compiled(inp_strlen(compiled)+1:inp_strlen(compiled)+25) = 
+-     $         ' Version 7.2.0'
++     $         ' Version 7.2.1'
+       call ecce_print_version(compiled(1:inp_strlen(compiled)))
+ C
+       If ( Inp_StrLen(BatchID) .gt. 0) then
