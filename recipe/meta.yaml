@@ -72,6 +72,7 @@ test:
     # note: test files are included in the conda package
     # avoid shipping more than necessary (test suite is large!)
   source_files:
+    - QA/doaf*
     - QA/*sh
     - QA/nwpa*
     - QA/tests/h2o_opt
