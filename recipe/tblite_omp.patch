@@ -1,0 +1,11 @@
+--- a/src/libext/tblite/build_tblite_cmake.sh.org 2023-11-03 18:28:01.000000000 -0700
++++ a/src/libext/tblite/build_tblite_cmake.sh	  2023-11-03 22:13:59.484765795 -0700
+@@ -208,7 +208,7 @@
+  C_FLAGS+="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
+ fi
+ fi
+-if [[ -z "$USE_OPENMP" ]]; then
++if [[ -z "$USE_OPENMP" ]] || [[ $(uname -s) == "Darwin" ]]; then
+   DOOPENMP=OFF
+ else
+   DOOPENMP=ON
