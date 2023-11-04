@@ -22,6 +22,7 @@ export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --
 echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 
 cd $NWCHEM_TOP/QA
+ls -lrt 
 #export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 if [[ $(uname -s) == "Linux" ]]; then
     echo 'output of df -h /dev/shm' `df -h /dev/shm`
