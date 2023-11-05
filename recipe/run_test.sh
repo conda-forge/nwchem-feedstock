@@ -28,6 +28,8 @@ if [[ $(uname -s) == "Linux" ]]; then
     echo 'output of df -h /dev/shm' `df -h /dev/shm`
     mpirun -n 1 df -h /dev/shm || true
 fi
+ompi_info --all|grep MCA\ btl:
+export OMPI_MCA_btl=^openib,smcuda
 ./doafewqmtests.mpi 2 1 | tee tests.log
 #echo " %%%% h2o_opt.out %%%%"
 #tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
