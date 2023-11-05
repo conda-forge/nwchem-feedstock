@@ -60,6 +60,8 @@ requirements:
     - llvm-openmp  # [osx]
   run:
     - {{ mpi }}
+    - ucx
+    - rdma-core
     - openblas
     - libopenblas
     - scalapack
