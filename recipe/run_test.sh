@@ -2,7 +2,7 @@
 set -ex
 
 if [[ "$mpi" == "openmpi" ]]; then
-    export OMPI_MCA_plm_rsh_agent=sh
+#    export OMPI_MCA_plm_rsh_agent=sh
 fi
 export OMP_NUM_THREADS=1
 export NWCHEM_TOP=$SRC_DIR
@@ -30,7 +30,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 fi
 ompi_info --all|grep MCA\ btl:
 #export OMPI_MCA_btl=^openib,smcuda
-export OMPI_MCA_btl=self,vader
+export OMPI_MCA_btl=self,tcp
 export OMPI_MCA_btl_base_verbose=40
 ./doafewqmtests.mpi 2 1 | tee tests.log
 echo " %%%% h2o_opt.out %%%%"
