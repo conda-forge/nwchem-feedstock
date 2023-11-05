@@ -73,6 +73,7 @@ test:
     # avoid shipping more than necessary (test suite is large!)
   source_files:
     - QA/doaf*
+    - QA/run*
     - QA/*sh
     - QA/nwpa*
     - QA/tests/h2o_opt
