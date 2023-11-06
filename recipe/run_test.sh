@@ -31,10 +31,11 @@ if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm_rsh_agent=ssh
 fi
 export OMPI_MCA_btl=self,tcp
-export OMPI_MCA_btl_base_verbose=40
+#export OMPI_MCA_btl_base_verbose=40
 ./doafewqmtests.mpi 2 1 | tee tests.log
-echo " %%%% h2o_opt.out %%%%"
-cat $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
+./runtests.mpi.unix procs 2 oh2
+#echo " %%%% h2o_opt.out %%%%"
+#cat $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
 #tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
 #echo " %%%% end of h2o_opt.out %%%%"
 #echo " %%%% localize-ibo-aa.out %%%%"
