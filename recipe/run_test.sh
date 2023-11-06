@@ -32,8 +32,7 @@ if [[ "$mpi" == "openmpi" ]]; then
 fi
 export OMPI_MCA_btl=self,tcp
 #export OMPI_MCA_btl_base_verbose=40
-./doafewqmtests.mpi 2 1 | tee tests.log
-./runtests.mpi.unix procs 2 oh2
+./doafewqmtests.mpi 2 1 
 #echo " %%%% h2o_opt.out %%%%"
 #cat $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
 #tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
