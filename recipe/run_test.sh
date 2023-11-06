@@ -1,9 +1,9 @@
 #!/bin/bash -f
 set -ex
 
-if [[ "$mpi" == "openmpi" ]]; then
+#if [[ "$mpi" == "openmpi" ]]; then
 #    export OMPI_MCA_plm_rsh_agent=sh
-fi
+#fi
 export OMP_NUM_THREADS=1
 export NWCHEM_TOP=$SRC_DIR
 export NWCHEM_EXECUTABLE=$PREFIX/bin/nwchem
