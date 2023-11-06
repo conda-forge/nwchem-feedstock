@@ -67,6 +67,7 @@ requirements:
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - openssh  # [linux]
 
 test:
     # note: test files are included in the conda package
