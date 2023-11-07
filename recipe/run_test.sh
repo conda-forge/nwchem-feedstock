@@ -1,6 +1,6 @@
 #!/bin/bash -f
 set -ex
-if [[ $(uname -s) == "Linux" ]] && [[ "$build_arch" == "arm64" ]]; then
+if [[ $(uname -s) == "Linux" ]] && [[ "$build_arch" == "aarch64" ]]; then
     exit 0
 fi
 export OMP_NUM_THREADS=1
