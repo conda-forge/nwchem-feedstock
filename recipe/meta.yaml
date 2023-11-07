@@ -22,7 +22,6 @@ source:
   url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
   sha256: 47f19f2d59e988d33fc4fe067a97da5d15a7ed1167d5acd644dbe84065c19729
   patches:
-    - earlyexit.patch
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
