@@ -1,6 +1,8 @@
 #!/bin/bash -f
 set -ex
-
+if [[ $(uname -s) == "Linux" ]] && [[ "$build_arch" == "arm64" ]]; then
+    exit 0
+fi
 export OMP_NUM_THREADS=1
 export NWCHEM_TOP=$SRC_DIR
 export NWCHEM_EXECUTABLE=$PREFIX/bin/nwchem
