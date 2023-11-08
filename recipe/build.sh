@@ -59,8 +59,10 @@ if [[ "$build_arch" == "x86_64" ]]; then
     export BUILD_PLUMED=1
 fi
 # https://github.com/simint-chem/simint-generator
-export USE_SIMINT=1
-export SIMINT_MAXAM=5
+if [[ "$build_arch" != "ppc64le" ]]; then
+    export USE_SIMINT=1
+    export SIMINT_MAXAM=5
+fi
 if [[ "$build_arch" == "x86_64" ]]; then
     export SIMINT_VECTOR=AVX2
 elif [[ "$build_arch" == "aarch64" ||  "$build_arch" == "arm64" || "$build_arch" == "ppc64le" ]]; then
