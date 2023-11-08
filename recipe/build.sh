@@ -59,7 +59,8 @@ if [[ "$build_arch" == "x86_64" ]]; then
     export BUILD_PLUMED=1
 fi
 # https://github.com/simint-chem/simint-generator
-if [[ "$build_arch" != "ppc64le" ]]; then
+env | grep -i arch
+if [[ "$build_arch" != "powerpc64le" ]]; then
     export USE_SIMINT=1
     export SIMINT_MAXAM=5
 fi
