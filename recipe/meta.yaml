@@ -3,7 +3,7 @@
 {% set hash = "74936fb9" %}
 {% set date = "2023-11-03" %}
 
-{% set build = 0 %}
+{% set build = 1 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -22,7 +22,6 @@ source:
   url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
   sha256: 47f19f2d59e988d33fc4fe067a97da5d15a7ed1167d5acd644dbe84065c19729
   patches:
-    - earlyexit.patch
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
@@ -67,13 +66,15 @@ requirements:
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - openssh  # [linux]
 
 test:
     # note: test files are included in the conda package
     # avoid shipping more than necessary (test suite is large!)
   source_files:
+    - QA/doaf*
     - QA/run*
-    - QA/do*
+    - QA/*sh
     - QA/nwpa*
     - QA/tests/h2o_opt
     - QA/tests/dft_he2+
