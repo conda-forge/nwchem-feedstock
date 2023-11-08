@@ -63,7 +63,7 @@ export USE_SIMINT=1
 export SIMINT_MAXAM=5
 if [[ "$build_arch" == "x86_64" ]]; then
     export SIMINT_VECTOR=AVX2
-elif [[ "$build_arch" == "aarch64" ]] || [[ "$build_arch" == "arm64" ]]; then
+elif [[ "$build_arch" == "aarch64" ||  "$build_arch" == "arm64" || "$build_arch" == "ppc64le" ]]; then
     export SIMINT_VECTOR=scalar
 else
     export SIMINT_VECTOR=scalar

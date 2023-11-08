@@ -1,8 +1,8 @@
 #!/bin/bash -f
 set -ex
-if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" ]]; then
-    echo 'skipping QA tests on linux aarch64'
-    echo 'because of non working MPI'
+if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
+    echo "skipping QA tests on linux $ARCH"
+    echo "because of non working MPI"
     exit 0
 fi
 export OMP_NUM_THREADS=1
