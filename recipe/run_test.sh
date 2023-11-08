@@ -19,7 +19,7 @@ ln -s $PREFIX/share/nwchem/libraries/ $SRC_DIR/src/basis/libraries
 export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 unset USE_SIMINT
 # ARMCI_NETWORK is used in QAs
-export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 
 cd $NWCHEM_TOP/QA

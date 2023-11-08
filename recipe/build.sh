@@ -29,7 +29,7 @@ else
     export NWCHEM_TARGET=MACX64
 fi
 
-export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 export USE_OPENMP=y
 echo "USE_OPENMP is equal to " $USE_OPENMP
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
