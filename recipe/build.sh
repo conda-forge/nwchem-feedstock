@@ -29,7 +29,7 @@ else
     export NWCHEM_TARGET=MACX64
 fi
 
-export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 export USE_OPENMP=y
 echo "USE_OPENMP is equal to " $USE_OPENMP
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
@@ -59,11 +59,18 @@ if [[ "$build_arch" == "x86_64" ]]; then
     export BUILD_PLUMED=1
 fi
 # https://github.com/simint-chem/simint-generator
-export USE_SIMINT=1
-export SIMINT_MAXAM=5
+env | grep -i arch
+if [[ "$build_arch" == "powerpc64le" ]]; then
+export CFLAGS=$(echo $CFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export CXXFLAGS=$(echo $CXXFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export DEBUG_CFLAGS=$(echo $DEBUG_CFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export DEBUG_CXXFLAGS=$(echo $DEBUG_CXXFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+fi
+    export USE_SIMINT=1
+    export SIMINT_MAXAM=5
 if [[ "$build_arch" == "x86_64" ]]; then
     export SIMINT_VECTOR=AVX2
-elif [[ "$build_arch" == "arm64" ]]; then
+elif [[ "$build_arch" == "aarch64" ||  "$build_arch" == "arm64" || "$build_arch" == "ppc64le" ]]; then
     export SIMINT_VECTOR=scalar
 else
     export SIMINT_VECTOR=scalar

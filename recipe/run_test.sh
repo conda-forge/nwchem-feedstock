@@ -1,8 +1,8 @@
 #!/bin/bash -f
 set -ex
-if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" ]]; then
-    echo 'skipping QA tests on linux aarch64'
-    echo 'because of non working MPI'
+if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
+    echo "skipping QA tests on linux $ARCH"
+    echo "because of non working MPI"
     exit 0
 fi
 export OMP_NUM_THREADS=1
@@ -19,7 +19,7 @@ ln -s $PREFIX/share/nwchem/libraries/ $SRC_DIR/src/basis/libraries
 export NWCHEM_BASIS_LIBRARY=$SRC_DIR/src/basis/libraries/
 unset USE_SIMINT
 # ARMCI_NETWORK is used in QAs
-export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed --expression='s/_/-/g' )
+export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 
 cd $NWCHEM_TOP/QA
