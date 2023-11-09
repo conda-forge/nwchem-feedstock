@@ -60,10 +60,14 @@ if [[ "$build_arch" == "x86_64" ]]; then
 fi
 # https://github.com/simint-chem/simint-generator
 env | grep -i arch
-if [[ "$build_arch" != "powerpc64le" ]]; then
+if [[ "$build_arch" == "powerpc64le" ]]; then
+export CFLAGS=$(echo $CFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export CXXFLAGS=$(echo $CXXFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export DEBUG_CFLAGS=$(echo $DEBUG_CFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+export DEBUG_CXXFLAGS=$(echo $DEBUG_CXXFLAGS | sed -e 's/-mtune=power8//g' | sed -e 's/-mcpu=power8//g' )
+fi
     export USE_SIMINT=1
     export SIMINT_MAXAM=5
-fi
 if [[ "$build_arch" == "x86_64" ]]; then
     export SIMINT_VECTOR=AVX2
 elif [[ "$build_arch" == "aarch64" ||  "$build_arch" == "arm64" || "$build_arch" == "ppc64le" ]]; then
