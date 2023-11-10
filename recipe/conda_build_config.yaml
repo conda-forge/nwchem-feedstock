@@ -1,6 +1,7 @@
 armci_network:
   - mpi_ts
   - mpi_pr
+  - mpi_pt
 
 mpi:
   - openmpi
