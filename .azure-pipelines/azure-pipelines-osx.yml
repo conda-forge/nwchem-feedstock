@@ -23,6 +23,21 @@ jobs:
       osx_64_armci_networkmpi_prpython3.9.____cpython:
         CONFIG: osx_64_armci_networkmpi_prpython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_64_armci_networkmpi_ptpython3.10.____cpython:
+        CONFIG: osx_64_armci_networkmpi_ptpython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_armci_networkmpi_ptpython3.11.____cpython:
+        CONFIG: osx_64_armci_networkmpi_ptpython3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_armci_networkmpi_ptpython3.12.____cpython:
+        CONFIG: osx_64_armci_networkmpi_ptpython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_armci_networkmpi_ptpython3.8.____cpython:
+        CONFIG: osx_64_armci_networkmpi_ptpython3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_armci_networkmpi_ptpython3.9.____cpython:
+        CONFIG: osx_64_armci_networkmpi_ptpython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
       osx_64_armci_networkmpi_tspython3.10.____cpython:
         CONFIG: osx_64_armci_networkmpi_tspython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -53,6 +68,21 @@ jobs:
       osx_arm64_armci_networkmpi_prpython3.9.____cpython:
         CONFIG: osx_arm64_armci_networkmpi_prpython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_arm64_armci_networkmpi_ptpython3.10.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_ptpython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_armci_networkmpi_ptpython3.11.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_ptpython3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_armci_networkmpi_ptpython3.12.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_ptpython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_armci_networkmpi_ptpython3.8.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_ptpython3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_armci_networkmpi_ptpython3.9.____cpython:
+        CONFIG: osx_arm64_armci_networkmpi_ptpython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
       osx_arm64_armci_networkmpi_tspython3.10.____cpython:
         CONFIG: osx_arm64_armci_networkmpi_tspython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -68,6 +98,7 @@ jobs:
       osx_arm64_armci_networkmpi_tspython3.9.____cpython:
         CONFIG: osx_arm64_armci_networkmpi_tspython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+    maxParallel: 20
   timeoutInMinutes: 360
 
   steps:
