@@ -25,6 +25,7 @@ source:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
+    - osx_headerpad.patch
   
 build:
   number: {{ build }} 
