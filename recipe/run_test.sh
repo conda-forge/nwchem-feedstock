@@ -36,12 +36,11 @@ if [[ "$mpi" == "openmpi" ]]; then
 fi
 export OMPI_MCA_btl=self,tcp
 #export OMPI_MCA_btl_base_verbose=40
-./doafewqmtests.mpi 2 1 
-#echo " %%%% h2o_opt.out %%%%"
-#cat $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
-#tail -300 $NWCHEM_TOP/QA/testoutputs/h2o_opt.out
-#echo " %%%% end of h2o_opt.out %%%%"
-#echo " %%%% localize-ibo-aa.out %%%%"
-#cat $NWCHEM_TOP/QA/testoutputs/localize-ibo-aa.out
-#echo " %%%% end of localize-ibo-aa.out %%%%"
-
+env|egrep -i armci
+echo "armci_network is " $armci_network
+if [[ $armci_network  == 'mpi_pt' ]]; then
+    QA_NPROC=1
+else
+    QA_NPROC=2
+fi
+./doafewqmtests.mpi $QA_NPROC 
