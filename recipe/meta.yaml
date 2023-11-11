@@ -3,7 +3,7 @@
 {% set hash = "74936fb9" %}
 {% set date = "2023-11-03" %}
 
-{% set build = 3 %}
+{% set build = 4 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -26,6 +26,7 @@ source:
     - conda_nwchemrc.patch
     - tblite_omp.patch
     - osx_headerpad.patch
+    - openblas_openmp.patch
   
 build:
   number: {{ build }} 
