@@ -32,10 +32,11 @@ fi
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 export USE_OPENMP=y
 echo "USE_OPENMP is equal to " $USE_OPENMP
-#conda packages use OpenMP to thread OpenBLAS
-echo "OpenBLAS build_string" $(conda list -f openblas --json|grep string)
-(conda list -f openblas --json|grep string | grep openmp1 ) >& /dev/null
-if [ $? -eq 0 ]
+find $PREFIX -name "libopenblas.so*"|| true
+gotomp=$(ldd $PREFIX/lib/libopenblas.so | grep libomp | wc -l )
+echo gotomp $gotomp
+#conda packages might use OpenMP to thread OpenBLAS
+if [ $gotomp -ne 0 ]
 then
     echo openblas built with OpenMP
     export OPENBLAS_USES_OPENMP=1
