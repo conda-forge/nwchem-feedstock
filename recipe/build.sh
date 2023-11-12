@@ -32,6 +32,17 @@ fi
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
 export USE_OPENMP=y
 echo "USE_OPENMP is equal to " $USE_OPENMP
+find $PREFIX -name "libopenblas.so*"|| true
+gotomp=$(ldd $PREFIX/lib/libopenblas.so | grep libomp | wc -l )
+echo gotomp $gotomp
+#conda packages might use OpenMP to thread OpenBLAS
+if [ $gotomp -ne 0 ]
+then
+    echo openblas built with OpenMP
+    export OPENBLAS_USES_OPENMP=1
+else
+    echo openblas built without OpenMP
+fi
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
 export NWCHEM_MODULES="all python gwmol xtb"

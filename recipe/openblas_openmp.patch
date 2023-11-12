@@ -1,0 +1,20 @@
+diff --git a/src/config/makefile.h b/src/config/makefile.h
+index 8754b5ce197af857ad0595bc62b10fe4356b053a..04b3f6abc5ee6d945a4616a2e5f672444e76cff6 100644
+--- a/src/config/makefile.h
++++ b/src/config/makefile.h
+@@ -3858,7 +3858,14 @@ ifdef BUILD_OPENBLAS
+     DEFINES += -DOPENBLAS
+ endif
+ ifeq ($(shell echo $(BLASOPT) |awk '/openblas/ {print "Y"; exit}'),Y)
+-    DEFINES += -DOPENBLAS
++    ifdef OPENBLAS_USES_OPENMP
++        DEFINES += -DBLAS_OPENMP
++        ifndef USE_OPENMP
++           $(error USE_OPENMP must be set when OPENBLAS_USES_OPENMP is set)
++        endif
++    else
++        DEFINES += -DOPENBLAS
++    endif
+ endif
+ # NVHPC compilers are distributed wtih OpenBLAS named as libblas/liblapack
+ ifeq ($(shell echo $(BLASOPT) |awk '/\/nvidia\/hpc_sdk\// {print "Y"; exit}'),Y)
