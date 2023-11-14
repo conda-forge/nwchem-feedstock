@@ -30,8 +30,8 @@ else
 fi
 
 export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e 's/_/-/g' )
-export USE_OPENMP=y
-echo "USE_OPENMP is equal to " $USE_OPENMP
+#export USE_OPENMP=y
+#echo "USE_OPENMP is equal to " $USE_OPENMP
 find $PREFIX -name "libopenblas.*"|| true
 if [ $(uname -s) == 'Darwin' ]; then
     MYLDD='otool -L'
