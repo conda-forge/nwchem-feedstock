@@ -33,7 +33,13 @@ export ARMCI_NETWORK=$(echo $armci_network | tr "[:lower:]" "[:upper:]" | sed -e
 export USE_OPENMP=y
 echo "USE_OPENMP is equal to " $USE_OPENMP
 find $PREFIX -name "libopenblas.so*"|| true
+# check first against clang libomp
 gotomp=$(ldd $PREFIX/lib/libopenblas.so | grep libomp | wc -l )
+# next check against gcc libgomp
+if [ $gotomp -eq 0 ]
+then
+gotomp=$(ldd $PREFIX/lib/libopenblas.so | grep libgomp | wc -l )
+fi
 echo gotomp $gotomp
 #conda packages might use OpenMP to thread OpenBLAS
 if [ $gotomp -ne 0 ]
