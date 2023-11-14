@@ -1,17 +1,54 @@
 diff --git a/src/config/makefile.h b/src/config/makefile.h
-index 8754b5ce197af857ad0595bc62b10fe4356b053a..04b3f6abc5ee6d945a4616a2e5f672444e76cff6 100644
+index fd4008e6e4..f2bb33c32c 100644
 --- a/src/config/makefile.h
 +++ b/src/config/makefile.h
-@@ -3858,7 +3858,14 @@ ifdef BUILD_OPENBLAS
+@@ -1378,6 +1379,9 @@ ifeq ($(TARGET),MACX64)
+             FOPTIONS  += -fopenmp
+             LDOPTIONS += -fopenmp
+         endif
++        ifdef OPENBLAS_USES_OPENMP
++            LDOPTIONS += -fopenmp
++        endif
+ 
+         ifdef  USE_ASAN
+             FOPTIONS += -fsanitize=address -fsanitize-recover=address
+@@ -2244,6 +2248,9 @@ ifneq ($(TARGET),LINUX)
+ #                    DEFINES +=-DUSE_F90_ALLOCATABLE -DUSE_OMP_TEAMS_DISTRIBUTE
+                 endif
+             endif
++	    ifdef OPENBLAS_USES_OPENMP
++                LDOPTIONS += -fopenmp
++	    endif
+         endif
+ 
+ 
+@@ -2398,6 +2405,9 @@ ifneq ($(TARGET),LINUX)
+                         FOPTIONS += -fopenmp-targets=spirv64
+                     endif
+                 endif
++                ifdef OPENBLAS_USES_OPENMP
++                     LDOPTIONS += -fopenmp
++                endif
+                 ifdef IFX_DEBUG
+                     # debugging remove at some point
+                     FOPTIONS += -std95 -what
+@@ -2931,6 +2941,9 @@ ifneq ($(TARGET),LINUX)
+                   FOPTIONS  += -fopenmp
+                   LDOPTIONS += -fopenmp
+                 endif
++                ifdef OPENBLAS_USES_OPENMP
++                     LDOPTIONS += -fopenmp
++                endif
+ 
+                 DEFINES   +=   -DARMFLANG
+                 LINK.f = $(FC)  $(LDFLAGS) 
+@@ -3888,7 +3901,11 @@ ifdef BUILD_OPENBLAS
      DEFINES += -DOPENBLAS
  endif
  ifeq ($(shell echo $(BLASOPT) |awk '/openblas/ {print "Y"; exit}'),Y)
 -    DEFINES += -DOPENBLAS
 +    ifdef OPENBLAS_USES_OPENMP
 +        DEFINES += -DBLAS_OPENMP
-+        ifndef USE_OPENMP
-+           $(error USE_OPENMP must be set when OPENBLAS_USES_OPENMP is set)
-+        endif
 +    else
 +        DEFINES += -DOPENBLAS
 +    endif
