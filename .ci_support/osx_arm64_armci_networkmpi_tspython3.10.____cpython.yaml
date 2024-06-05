@@ -1,11 +1,17 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 armci_network:
 - mpi_ts
 c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -29,7 +35,7 @@ mpich:
 openblas:
 - 0.3.*
 openmpi:
-- '4'
+- '5'
 perl:
 - 5.32.1
 pin_run_as_build:
