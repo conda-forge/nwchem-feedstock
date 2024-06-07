@@ -3,7 +3,7 @@
 {% set hash = "74936fb9" %}
 {% set date = "2023-11-03" %}
 
-{% set build = 5 %}
+{% set build = 6 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -38,6 +38,7 @@ requirements:
   build:
     - cmake >=3.21
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - {{ compiler('cxx') }}
     - python  # [build_platform != target_platform]
@@ -54,7 +55,7 @@ requirements:
     - openblas
     - scalapack
     - python
-    - libxc
+    - libxc =*=*cpu*
     - openssh
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
