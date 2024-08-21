@@ -1,9 +1,12 @@
 {% set name = "nwchem" %}
-{% set version = "7.2.2" %}
+{% set version = "7.2.3" %}
 {% set hash = "74936fb9" %}
-{% set date = "2023-11-03" %}
+{% set commit = "c47a052ddde91042b7533a81f751302447d1f76c" %}
+#commit https://github.com/nwchemgit/nwchem/commit/c47a052ddde91042b7533a81f751302447d1f76c
+#https://github.com/nwchemgit/nwchem/archive/c47a052ddde91042b7533a81f751302447d1f76c.tar.gz
+{% set date = "2024-08-18" %}
 
-{% set build = 6 %}
+{% set build = 0 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -19,14 +22,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
-  sha256: 47f19f2d59e988d33fc4fe067a97da5d15a7ed1167d5acd644dbe84065c19729
+#  url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
+  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
+  sha256: dc584088e59f6f1ba79a264a476248bc9b386e0cd97864385681d7b3bf70ae99
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
-    - osx_headerpad.patch
-    - openblas_openmp.patch
   
 build:
   number: {{ build }} 
