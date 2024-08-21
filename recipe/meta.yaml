@@ -27,6 +27,7 @@ source:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
+    - python38_crypth.patch
   
 build:
   number: {{ build }} 
