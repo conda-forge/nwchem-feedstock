@@ -60,6 +60,7 @@ requirements:
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - libxcrypt  # [linux and py<39]
   run:
     - {{ mpi }}
     - openblas
