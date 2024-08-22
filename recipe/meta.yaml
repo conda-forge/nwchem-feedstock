@@ -1,8 +1,12 @@
 {% set name = "nwchem" %}
 {% set version = "7.2.3" %}
-{% set hash = "74936fb9" %}
-{% set commit = "a9f3d51f605b69524cd768e15378c2d14218312f" %}
-{% set date = "2024-08-18" %}
+{% set hash = "a9f3d51f" %}
+#{% set release_tag = "v" + version + "-release" %}
+{% set release_tag = "nightly" %}
+#{% set user = "nwchemgit" %}
+{% set user = "edoapra" %}
+{% set date = "2024-08-22" %}
+#{% set commit = "a9f3d51f605b69524cd768e15378c2d14218312f" %}
 
 {% set build = 0 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
@@ -20,9 +24,9 @@ package:
   version: {{ version }}
 
 source:
-#  url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
-  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
-  sha256: 62eea7b07e96c3819ab21e6145d319153eb67cb6b1bc58eeb4d7f142a7237336
+  url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
+#  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
+  sha256: 8c67aae17932bd3dbb13ea995c43ed5f0117f6a56fa37ae258d5a757eb1e8ae6
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
