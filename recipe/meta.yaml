@@ -26,7 +26,7 @@ package:
 source:
   url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
 #  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
-  sha256: 8c67aae17932bd3dbb13ea995c43ed5f0117f6a56fa37ae258d5a757eb1e8ae6
+  sha256: 96761009f1d1acbdc120a77c00b963965791e8a4622b558455ccc1e50aec90c3
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
