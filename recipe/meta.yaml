@@ -1,8 +1,8 @@
 {% set name = "nwchem" %}
 {% set version = "7.2.3" %}
 {% set hash = "d690e065" %}
-#{% set release_tag = "v" + version + "-release" %}
-{% set release_tag = "nightly" %}
+{% set release_tag = "v" + version + "-release" %}
+#{% set release_tag = "nightly" %}
 #{% set user = "nwchemgit" %}
 {% set user = "edoapra" %}
 {% set date = "2024-08-24" %}
