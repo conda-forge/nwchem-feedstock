@@ -5,8 +5,8 @@
 #{% set release_tag = "nightly" %}
 #{% set user = "nwchemgit" %}
 {% set user = "edoapra" %}
-{% set date = "2024-08-24" %}
-#{% set commit = "a9f3d51f605b69524cd768e15378c2d14218312f" %}
+{% set date = "2024-08-23" %}
+#{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
 
 {% set build = 0 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
