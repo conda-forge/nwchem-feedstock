@@ -36,6 +36,7 @@ source:
 build:
   number: {{ build }} 
   skip: true  # [win]
+  skip: true  # [py==39 and osx]
   string: py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
