@@ -1,9 +1,13 @@
 {% set name = "nwchem" %}
-{% set version = "7.2.2" %}
-{% set hash = "74936fb9" %}
-{% set date = "2023-11-03" %}
+{% set version = "7.2.3" %}
+{% set hash = "d690e065" %}
+{% set release_tag = "v" + version + "-release" %}
+#{% set release_tag = "nightly" %}
+{% set user = "nwchemgit" %}
+{% set date = "2024-08-27" %}
+#{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
 
-{% set build = 6 %}
+{% set build = 0 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -19,18 +23,19 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/nwchemgit/nwchem/releases/download/v{{ version }}-release/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
-  sha256: 47f19f2d59e988d33fc4fe067a97da5d15a7ed1167d5acd644dbe84065c19729
+  url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
+#  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
+  sha256: 8800196cf85771264f3bc9c5aa8bc24410a95ec1acc3f515e1d08dd7ca82c5fd
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
-    - osx_headerpad.patch
-    - openblas_openmp.patch
-  
+    - python38_crypth.patch
+ 
 build:
   number: {{ build }} 
   skip: true  # [win]
+  skip: true  # [py==39 and osx]
   string: py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
@@ -60,6 +65,7 @@ requirements:
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - libxcrypt  # [linux and py<39]
   run:
     - {{ mpi }}
     - openblas
