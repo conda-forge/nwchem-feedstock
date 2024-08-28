@@ -14,6 +14,11 @@
 {% set build = build + 1000 %}
 {% endif %}
 {% set armci_prefix = armci_network %}
+{% if armci_network  == 'mpi3' %}
+# get six digits armci_prefix
+{% set armci_prefix = 'mpi__3' %}
+{% endif %}
+
 
 
 
