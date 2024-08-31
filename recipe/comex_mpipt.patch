@@ -1,0 +1,13 @@
+diff --git a/comex/src-mpi-pt/comex_impl.h b/comex/src-mpi-pt/comex_impl.h
+index 3291522b..11138fce 100644
+--- a/src/tools/ga-5.8.2/comex/src-mpi-pt/comex_impl.h
++++ b/src/tools/ga-5.8.2/comex/src-mpi-pt/comex_impl.h
+@@ -7,7 +7,7 @@
+ 
+ #include "groups.h"
+ 
+-#define COMEX_MAX_NB_OUTSTANDING 8
++#define COMEX_MAX_NB_OUTSTANDING 16
+ #define COMEX_MAX_STRIDE_LEVEL 8
+ #define COMEX_TAG 27624
+ #define COMEX_STATIC_BUFFER_SIZE (2u*1048576u)
