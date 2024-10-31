@@ -7,7 +7,7 @@
 {% set date = "2024-08-27" %}
 #{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
 
-{% set build = 2 %}
+{% set build = 3 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
@@ -57,7 +57,6 @@ requirements:
     - make
     - gnuconfig
     - sed
-    - file
     - {{ mpi }}
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
