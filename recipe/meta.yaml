@@ -8,7 +8,7 @@
 {% set date = "2025-09-16" %}
 #{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
 
-{% set build = 3 %}
+{% set build = 0 %}
 {% set armci_network = armci_network or 'mpi_ts' %}
 {% if armci_network  == 'mpi_ts' %}
 # prioritize 'nompi' variant via build number
