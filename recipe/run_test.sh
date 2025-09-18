@@ -33,8 +33,9 @@ ompi_info --all|grep MCA\ btl:
 #export OMPI_MCA_btl=^openib,smcuda
 if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm_rsh_agent=ssh
+    export OMPI_MCA_btl=self,tcp
+    export OMPI_MCA_osc=^ucx
 fi
-export OMPI_MCA_btl=self,tcp
 #export OMPI_MCA_btl_base_verbose=40
 env|egrep -i armci
 echo "armci_network is " $armci_network
