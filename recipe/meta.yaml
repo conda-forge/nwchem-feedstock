@@ -64,7 +64,7 @@ requirements:
     - openblas
     - scalapack
     - python
-    - libxc =*=*cpu*
+    - libxc *.* *cpu*
     - openssh
     - plumed  # [not (linux64 or osx)]
     - libgomp  # [linux]
