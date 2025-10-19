@@ -58,12 +58,12 @@ requirements:
     - gnuconfig
     - sed
     - ${{ mpi }}
-    if: linux
-    then:
-      - libgomp
-    if: osx
-    then:
-      - llvm-openmp
+    - if: linux
+      then:
+        - libgomp
+    - if: osx
+      then:
+        - llvm-openmp
   host:
     - ${{ mpi }}
     - openblas
@@ -71,34 +71,34 @@ requirements:
     - python
     - libxc *.* *cpu*
     - openssh
-    if: not (linux64 or osx)
-    then:
-      - plumed
-    if: osx
-    then:
-      - llvm-openmp
-    if: linux
-    then:
-      - libgomp
-      if: py<39
+    - if: not (linux64 or osx)
       then:
-        - libxcrypt
+        - plumed
+    - if: osx
+      then:
+        - llvm-openmp
+    - if: linux
+      then:
+        - libgomp
+        - if: py<39
+          then:
+            - libxcrypt
   run:
     - ${{ mpi }}
     - openblas
     - libopenblas
     - scalapack
     - python
-    if: not (linux64 or osx)]
-    then:
-      - plumed
-    if: osx
-    then:
-      - llvm-openmp
-    if: linux
-    then:
-      - libgomp
-      - openssh
+    - if: not (linux64 or osx)]
+      then:
+        - plumed
+    - if: osx
+      then:
+        - llvm-openmp
+    - if: linux
+      then:
+        - libgomp
+        - openssh
 
 tests:
     # note: test files are included in the conda package
