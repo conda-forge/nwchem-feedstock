@@ -50,10 +50,10 @@ requirements:
     - ${{ stdlib("c") }}
     - ${{ compiler('fortran') }}
     - ${{ compiler('cxx') }}
-    if: build_platform != target_platform
-    then:
-      - python  
-      - cross-python_${{ target_platform }} 
+    - if: build_platform != target_platform
+      then:
+        - python  
+        - cross-python_${{ target_platform }} 
     - make
     - gnuconfig
     - sed
