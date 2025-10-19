@@ -1,28 +1,22 @@
-{% set name = "nwchem" %}
-#{% set version = "7.3.0" %}
-{% set version = "nightly" %}
-{% set hash = "3a79daa2" %}
-{% set release_tag = "v" + version + "-release" %}
-#{% set release_tag = "v-nightly" %}
-{% set user = "edoapra" %}
-{% set date = "2025-10-19" %}
-#{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
-
-{% set build = 1 %}
-{% set armci_network = armci_network or 'mpi_ts' %}
-{% if armci_network  == 'mpi_ts' %}
-# prioritize 'nompi' variant via build number
-{% set build = build + 1000 %}
-{% endif %}
-{% set armci_prefix = armci_network %}
-{% if armci_network  == 'mpi3' %}
-# get six digits armci_prefix
-{% set armci_prefix = 'mpi__3' %}
-{% endif %}
-
-
-
-
+context:
+  name: "nwchem"
+  #version: "7.3.0"
+  version: "nightly"
+  hash: "3a79daa2"
+  release_tag: "v" + version + "-release"
+  user: "edoapra"
+  date: "2025-10-19"
+  build: 1 
+  armci_network: armci_network or 'mpi_ts'
+  if: match(armci_network, 'mpi_ts')
+  then:
+    # prioritize 'nompi' variant via build number
+    build: build + 1000
+  armci_prefix: armci_network
+  if: match(armci_network, 'mpi3')
+  then:
+  # get six digits armci_prefix
+  armci_prefix: 'mpi__3'
 
 package:
   name: {{ name|lower }}
@@ -102,7 +96,7 @@ requirements:
       - libgomp
       - openssh
 
-test:
+tests:
     # note: test files are included in the conda package
     # avoid shipping more than necessary (test suite is large!)
   source_files:
