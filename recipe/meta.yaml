@@ -2,10 +2,10 @@
 #{% set version = "7.3.0" %}
 {% set version = "nightly" %}
 {% set hash = "39ce3184" %}
-#{% set release_tag = "v" + version + "-release" %}
-{% set release_tag = "2025-09-16-nightly" %}
+{% set release_tag = "v" + version + "-release" %}
+#{% set release_tag = "v-nightly" %}
 {% set user = "edoapra" %}
-{% set date = "2025-09-16" %}
+{% set date = "2025-10-19" %}
 #{% set commit = "6505651e0d2f65efb4c49291ce45246069625069706da2cafbf543e185c4279e" %}
 
 {% set build = 1 %}
@@ -31,7 +31,7 @@ package:
 source:
   url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
 #  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
-  sha256: 035f7ec42ec5574df0ffc2d3b5c5ce2a8628d331cbbd7bd56870cc96a4d0b2e8
+  sha256: 3fbb5acdb7d78b43c8d83b46dfc6fbeaaa5af18f6aa8f48cfa71510c56cdc16b
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
