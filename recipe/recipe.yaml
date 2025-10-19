@@ -8,10 +8,10 @@ context:
   date: 2025-10-19
   build: 1 
   #armci_network: armci_network or 'mpi_ts'
-  if: armci_network == "mpi_ts"
-  then:
-    # prioritize 'nompi' variant via build number
-    build: ${{ build }} + 1000
+  #if: armci_network == "mpi_ts"
+  #then:
+  #  # prioritize 'nompi' variant via build number
+  #  build: ${{ build }} + 1000
   armci_prefix: armci_network
   if: armci_network == "mpi3"
   then:
