@@ -58,7 +58,7 @@ else
 fi
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
-export NWCHEM_MODULES="all python gwmol xtb"
+export NWCHEM_MODULES="all python gwmol xtb bsemol"
 # required for xtb module
 export USE_TBLITE=1
 #faster build
