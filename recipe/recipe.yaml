@@ -1,29 +1,29 @@
 context:
-  name: "nwchem"
+  name: nwchem
   #version: "7.3.0"
-  version: "nightly"
-  hash: "3a79daa2"
-  release_tag: "v" + version + "-release"
-  user: "edoapra"
-  date: "2025-10-19"
+  version: nightly
+  hash: 3a79daa2
+  release_tag: v${{ version }}-release
+  user: edoapra
+  date: 2025-10-19
   build: 1 
-  armci_network: armci_network or 'mpi_ts'
-  if: match(armci_network, 'mpi_ts')
+  #armci_network: armci_network or 'mpi_ts'
+  if: armci_network == "mpi_ts"
   then:
     # prioritize 'nompi' variant via build number
-    build: build + 1000
+    build: ${{ build }} + 1000
   armci_prefix: armci_network
-  if: match(armci_network, 'mpi3')
+  if: armci_network == "mpi3"
   then:
-  # get six digits armci_prefix
-  armci_prefix: 'mpi__3'
+    # get six digits armci_prefix
+    armci_prefix: 'mpi__3'
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
+  url: https://github.com/${{ user }}/nwchem/releases/download/${{ release_tag }}/nwchem-${{ version }}-release.revision-${{ hash }}-src.${{ date }}.tar.bz2
   sha256: 10b10b05d160a1500a5eda82bf001431c0e21cacc2440576f29c303ec3d34e6c
   patches:
     - qalargemem.patch
@@ -31,29 +31,33 @@ source:
     - tblite_omp.patch
  
 build:
-  number: {{ build }} 
+  number: ${{ build }} 
   skip:
     - win
     - py==39 and osx
   string:
-    - py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
+    - py${{ CONDA_PY }}_${{ armci_prefix }}_h${{ PKG_HASH }}_${{ build }}
+  variant:
+    use_keys:
+      - armci_prefix
+    down_prioritize_variant: ${{ 0 if mpi_ts else 1 }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 requirements:
   build:
     - cmake >=3.21
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('fortran') }}
-    - {{ compiler('cxx') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('fortran') }}
+    - ${{ compiler('cxx') }}
     if: build_platform != target_platform
     then:
       - python  
-      - cross-python_{{ target_platform }} 
+      - cross-python_${{ target_platform }} 
     - make
     - gnuconfig
     - sed
-    - {{ mpi }}
+    - ${{ mpi }}
     if: linux
     then:
       - libgomp
@@ -61,7 +65,7 @@ requirements:
     then:
       - llvm-openmp
   host:
-    - {{ mpi }}
+    - ${{ mpi }}
     - openblas
     - scalapack
     - python
@@ -80,7 +84,7 @@ requirements:
       then:
         - libxcrypt
   run:
-    - {{ mpi }}
+    - ${{ mpi }}
     - openblas
     - libopenblas
     - scalapack
