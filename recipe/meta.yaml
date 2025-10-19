@@ -1,7 +1,7 @@
 {% set name = "nwchem" %}
 #{% set version = "7.3.0" %}
 {% set version = "nightly" %}
-{% set hash = "39ce3184" %}
+{% set hash = "3a79daa2" %}
 {% set release_tag = "v" + version + "-release" %}
 #{% set release_tag = "v-nightly" %}
 {% set user = "edoapra" %}
@@ -31,7 +31,7 @@ package:
 source:
   url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
 #  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
-  sha256: 3fbb5acdb7d78b43c8d83b46dfc6fbeaaa5af18f6aa8f48cfa71510c56cdc16b
+  sha256: 10b10b05d160a1500a5eda82bf001431c0e21cacc2440576f29c303ec3d34e6c
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
