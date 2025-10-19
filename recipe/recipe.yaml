@@ -30,7 +30,6 @@ package:
 
 source:
   url: https://github.com/{{ user }}/nwchem/releases/download/{{ release_tag }}/nwchem-{{ version }}-release.revision-{{ hash }}-src.{{ date }}.tar.bz2
-#  url: https://github.com/nwchemgit/nwchem/archive/{{ commit }}.tar.gz
   sha256: 10b10b05d160a1500a5eda82bf001431c0e21cacc2440576f29c303ec3d34e6c
   patches:
     - qalargemem.patch
@@ -39,9 +38,11 @@ source:
  
 build:
   number: {{ build }} 
-  skip: true  # [win]
-  skip: true  # [py==39 and osx]
-  string: py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
+  skip:
+    - win
+    - py==39 and osx
+  string:
+    - py{{ CONDA_PY }}_{{ armci_prefix }}_h{{ PKG_HASH }}_{{ build }}
   script_env:
     - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
 requirements:
@@ -51,14 +52,20 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - {{ compiler('cxx') }}
-    - python  # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    if: build_platform != target_platform
+    then:
+      - python  
+      - cross-python_{{ target_platform }} 
     - make
     - gnuconfig
     - sed
     - {{ mpi }}
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
+    if: linux
+    then:
+      - libgomp
+    if: osx
+    then:
+      - llvm-openmp
   host:
     - {{ mpi }}
     - openblas
@@ -66,20 +73,34 @@ requirements:
     - python
     - libxc *.* *cpu*
     - openssh
-    - plumed  # [not (linux64 or osx)]
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
-    - libxcrypt  # [linux and py<39]
+    if: not (linux64 or osx)
+    then:
+      - plumed
+    if: osx
+    then:
+      - llvm-openmp
+    if: linux
+    then:
+      - libgomp
+      if: py<39
+      then:
+        - libxcrypt
   run:
     - {{ mpi }}
     - openblas
     - libopenblas
     - scalapack
     - python
-    - plumed  # [not (linux64 or osx)]
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
-    - openssh  # [linux]
+    if: not (linux64 or osx)]
+    then:
+      - plumed
+    if: osx
+    then:
+      - llvm-openmp
+    if: linux
+    then:
+      - libgomp
+      - openssh
 
 test:
     # note: test files are included in the conda package
