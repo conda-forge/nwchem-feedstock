@@ -8,7 +8,7 @@ context:
   date: 2025-10-19
   build: 1 
   #armci_network: armci_network or 'mpi_ts'
-  armci_prefix: armci_network
+  armci_prefix: ${{ armci_network }}
 
 package:
   name: ${{ name|lower }}
@@ -20,7 +20,6 @@ source:
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
-    - tblite_omp.patch
  
 build:
   number: ${{ build }} 
