@@ -125,6 +125,7 @@ tests:
         - QA/tests/localize-ibo-aa
         - QA/tests/localize-ibo-allyl
         - QA/tests/localize-pm-allyl
+        - QA/tests/localize-pm-aa
         - QA/tests/x2c-h2se
         - QA/tests/hg-1e-hfc-x2c
         - QA/tests/dft_he2p_wb97
