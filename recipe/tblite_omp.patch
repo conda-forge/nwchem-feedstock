@@ -5,7 +5,7 @@
  fi
  fi
 -if [[ -z "$USE_OPENMP" ]]; then
-+if [[ -z "$USE_OPENMP" ]] "Darwin" ]]; then
++if [[ -z "$USE_OPENMP" ]] || [[ $(uname -s) == "Darwin" ]]; then
    DOOPENMP=OFF
  else
    DOOPENMP=ON
