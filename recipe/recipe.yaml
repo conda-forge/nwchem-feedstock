@@ -7,8 +7,6 @@ context:
   user: edoapra
   date: 2025-10-19
   build: 1 
-  #armci_network: armci_network or 'mpi_ts'
-  armci_prefix: ${{ armci_network }}
 
 package:
   name: ${{ name|lower }}
@@ -20,20 +18,17 @@ source:
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
+    - tblite_omp.patch
  
 build:
   number: ${{ build }} 
   skip:
     - win
     - py==39 and osx
-  string: py${{ CONDA_PY }}_${{ armci_prefix }}_h${{ PKG_HASH }}_${{ build }}
-    #- if: armci_network == "mpi3"
-    #  then:
-    #    - py${{ CONDA_PY }}_mpi__3_h${{ PKG_HASH }}_${{ build }}
-    #  else:
+  string: py${{ CONDA_PY }}_${{ armci_network }}_h${{ PKG_HASH }}_${{ build }}
   variant:
     use_keys:
-      - armci_prefix
+      - armci_network
     down_prioritize_variant: ${{ 0 if mpi_ts else 1 }}
   script:
     env:
