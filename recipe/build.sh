@@ -58,11 +58,15 @@ else
 fi
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
+export QUICK_NWBUILD=1
+if [[ -z "$QUICK_NWBUILD" ]]; then
 export NWCHEM_MODULES="all python gwmol xtb bsemol"
 # required for xtb module
 export USE_TBLITE=1
+else
 #faster build
-#export NWCHEM_MODULES="nwdft driver solvation xtb python"
+export NWCHEM_MODULES="nwdft driver solvation python"
+fi
 export USE_NOIO=Y
 # disable native CPU optimizations
 export USE_HWOPT=n
@@ -79,6 +83,7 @@ export SCALAPACK_LIB="-L$PREFIX/lib -lscalapack"
 export LIBXC_INCLUDE="$PREFIX/include"
 export LIBXC_LIB="$PREFIX/lib"
 
+if [[ -z "$QUICK_NWBUILD" ]]; then
 if [[ "$build_arch" == "x86_64" ]]; then
     export BUILD_PLUMED=1
 fi
@@ -100,6 +105,7 @@ else
     export SIMINT_VECTOR=scalar
 fi
 echo "SIMINT_VECTOR is $SIMINT_VECTOR"
+fi
 #=================================================
 #=Make=NWChem
 #=================================================
