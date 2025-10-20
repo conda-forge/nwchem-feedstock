@@ -9,10 +9,6 @@ context:
   build: 1 
   #armci_network: armci_network or 'mpi_ts'
   armci_prefix: armci_network
-  if: armci_network == "mpi3"
-  then:
-    # get six digits armci_prefix
-    armci_prefix: 'mpi__3'
 
 package:
   name: ${{ name|lower }}
@@ -31,14 +27,18 @@ build:
   skip:
     - win
     - py==39 and osx
-  string:
-    - py${{ CONDA_PY }}_${{ armci_prefix }}_h${{ PKG_HASH }}_${{ build }}
+  string: py${{ CONDA_PY }}_${{ armci_prefix }}_h${{ PKG_HASH }}_${{ build }}
+    #- if: armci_network == "mpi3"
+    #  then:
+    #    - py${{ CONDA_PY }}_mpi__3_h${{ PKG_HASH }}_${{ build }}
+    #  else:
   variant:
     use_keys:
       - armci_prefix
     down_prioritize_variant: ${{ 0 if mpi_ts else 1 }}
-  script_env:
-    - CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size=256m"
+  script:
+    env:
+      CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
 requirements:
   build:
     - cmake >=3.21
@@ -53,6 +53,7 @@ requirements:
     - make
     - gnuconfig
     - sed
+    - perl
     - ${{ mpi }}
     - if: linux
       then:
@@ -94,8 +95,6 @@ requirements:
         - openssh
 
 tests:
-    # note: test files are included in the conda package
-    # avoid shipping more than necessary (test suite is large!)
   - files:
       source:
         - QA/doaf*
@@ -135,9 +134,7 @@ tests:
         - QA/tests/x2c-h2se
         - QA/tests/hg-1e-hfc-x2c
         - QA/tests/dft_he2p_wb97
-  - requirements:
-      run:
-        - perl
+    script: run_test.sh
 
 about:
   homepage: https://nwchemgit.github.io
@@ -147,8 +144,8 @@ about:
   summary: Open Source High-Performance Computational Chemistry
   description: |
     NWChem is actively developed by a consortium of developers and maintained by the Environmental Molecular Sciences Laboratory (EMSL), a US DOE Office of Science User Facility located at the Pacific Northwest National Laboratory (PNNL) in Washington State.
-  doc_url: https://nwchemgit.github.io/
-  dev_url: https://github.com/nwchemgit/nwchem
+  documentation: https://nwchemgit.github.io/
+  repository: https://github.com/nwchemgit/nwchem
 
 extra:
   recipe-maintainers:
