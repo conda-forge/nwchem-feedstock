@@ -1,4 +1,4 @@
-#!/bin/bash -f
+#!/bin/bash
 set -ex
 if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
     echo "skipping QA tests on linux $ARCH"
