@@ -8,10 +8,6 @@ context:
   date: 2025-10-19
   build: 1 
   #armci_network: armci_network or 'mpi_ts'
-  #if: armci_network == "mpi_ts"
-  #then:
-  #  # prioritize 'nompi' variant via build number
-  #  build: ${{ build }} + 1000
   armci_prefix: armci_network
   if: armci_network == "mpi3"
   then:
@@ -80,16 +76,13 @@ requirements:
     - if: linux
       then:
         - libgomp
-        - if: py<39
-          then:
-            - libxcrypt
   run:
     - ${{ mpi }}
     - openblas
     - libopenblas
     - scalapack
     - python
-    - if: not (linux64 or osx)]
+    - if: not (linux64 or osx)
       then:
         - plumed
     - if: osx
@@ -103,51 +96,51 @@ requirements:
 tests:
     # note: test files are included in the conda package
     # avoid shipping more than necessary (test suite is large!)
-  file:
-    source:
-      - QA/doaf*
-      - QA/run*
-      - QA/*sh
-      - QA/nwpa*
-      - QA/tests/h2o_opt
-      - QA/tests/dft_he2+
-      - QA/tests/small_intchk
-      - QA/tests/h2o_dk
-      - QA/tests/cosmo_h2o_dft
-      - QA/tests/pyqa3
-      - QA/tests/tddft_h2o
-      - QA/tests/tddft_n2+
-      - QA/tests/tddft_ac_co
-      - QA/tests/hi_zora_sf
-      - QA/tests/prop_ch3f
-      - QA/tests/h2_bnl
-      - QA/tests/h2o_bnl
-      - QA/tests/h2o-camb3lyp-pol
-      - QA/tests/h2o-cambeckehh
-      - QA/tests/h2o-campbe0
-      - QA/tests/h2o-lcpbe
-      - QA/tests/o2_bnl
-      - QA/tests/o2_hfattn
-      - QA/tests/dmo_tddft_cd
-      - QA/tests/dmo_tddft_cd_velocity
-      - QA/tests/h2o-response
-      - QA/tests/h2o2-response
-      - QA/tests/h2o2-response-uhf
-      - QA/tests/h2o2-response-uhf-damping
-      - QA/tests/h2o2-prop-notrans
-      - QA/tests/ch3radical_unrot
-      - QA/tests/localize-ibo-aa
-      - QA/tests/localize-ibo-allyl
-      - QA/tests/localize-pm-allyl
-      - QA/tests/x2c-h2se
-      - QA/tests/hg-1e-hfc-x2c
-      - QA/tests/dft_he2p_wb97
-  requirements:
-    run:
-      - perl
+  - files:
+      source:
+        - QA/doaf*
+        - QA/run*
+        - QA/*sh
+        - QA/nwpa*
+        - QA/tests/h2o_opt
+        - QA/tests/dft_he2+
+        - QA/tests/small_intchk
+        - QA/tests/h2o_dk
+        - QA/tests/cosmo_h2o_dft
+        - QA/tests/pyqa3
+        - QA/tests/tddft_h2o
+        - QA/tests/tddft_n2+
+        - QA/tests/tddft_ac_co
+        - QA/tests/hi_zora_sf
+        - QA/tests/prop_ch3f
+        - QA/tests/h2_bnl
+        - QA/tests/h2o_bnl
+        - QA/tests/h2o-camb3lyp-pol
+        - QA/tests/h2o-cambeckehh
+        - QA/tests/h2o-campbe0
+        - QA/tests/h2o-lcpbe
+        - QA/tests/o2_bnl
+        - QA/tests/o2_hfattn
+        - QA/tests/dmo_tddft_cd
+        - QA/tests/dmo_tddft_cd_velocity
+        - QA/tests/h2o-response
+        - QA/tests/h2o2-response
+        - QA/tests/h2o2-response-uhf
+        - QA/tests/h2o2-response-uhf-damping
+        - QA/tests/h2o2-prop-notrans
+        - QA/tests/ch3radical_unrot
+        - QA/tests/localize-ibo-aa
+        - QA/tests/localize-ibo-allyl
+        - QA/tests/localize-pm-allyl
+        - QA/tests/x2c-h2se
+        - QA/tests/hg-1e-hfc-x2c
+        - QA/tests/dft_he2p_wb97
+  - requirements:
+      run:
+        - perl
 
 about:
-  home: https://nwchemgit.github.io
+  homepage: https://nwchemgit.github.io
   license: ECL-2.0
   license_family: OTHER
   license_file: LICENSE
