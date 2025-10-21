@@ -1,8 +1,9 @@
 #!/bin/bash
 set -ex
 export ARCH=$(uname -m)
-if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
-    echo "skipping QA tests on linux $ARCH"
+echo ARCH is $ARCH
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
+    echo "skipping QA tests on  $ARCH"
     echo "because of non working MPI"
     exit 0
 fi
@@ -28,10 +29,6 @@ echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 cd QA
 ls -lrt 
 export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
-if [[ $(uname -s) == "Linux" ]]; then
-    echo 'output of df -h /dev/shm' `df -h /dev/shm`
-    mpirun -n 1 df -h /dev/shm || true
-fi
 ompi_info --all|grep MCA\ btl:
 #export OMPI_MCA_btl=^openib,smcuda
 #if [[ "$mpi" == "openmpi" ]]; then
