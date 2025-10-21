@@ -129,7 +129,11 @@ tests:
         - QA/tests/x2c-h2se
         - QA/tests/hg-1e-hfc-x2c
         - QA/tests/dft_he2p_wb97
-    script: run_test.sh
+    script:
+      file: run_test.sh
+      env:
+        armci_network: ${{ armci_network }}
+        CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
 
 about:
   homepage: https://nwchemgit.github.io
