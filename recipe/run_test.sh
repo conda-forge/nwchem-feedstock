@@ -26,7 +26,7 @@ echo "ARMCI_NETWORK is $ARMCI_NETWORK"
 
 cd QA
 ls -lrt 
-#export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
+export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 if [[ $(uname -s) == "Linux" ]]; then
     echo 'output of df -h /dev/shm' `df -h /dev/shm`
     mpirun -n 1 df -h /dev/shm || true
