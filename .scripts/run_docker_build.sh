@@ -75,7 +75,7 @@ echo @@@@@
 echo "CONDA_FORGE_DOCKER_RUN_ARGS" ${CONDA_FORGE_DOCKER_RUN_ARGS}
 DOCKER_RUN_ARGS="${CONDA_FORGE_DOCKER_RUN_ARGS} --shm-size=256m"
 if [ -z "${CI}" ]; then
-    DOCKER_RUN_ARGS="-it ${DOCKER_RUN_ARGS} --shm-size=256m"
+    DOCKER_RUN_ARGS="-it ${DOCKER_RUN_ARGS}"
 fi
 
 ( endgroup "Configure Docker" ) 2> /dev/null
