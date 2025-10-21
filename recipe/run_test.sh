@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+export ARCH=$(uname -m)
 if [[ $(uname -s) == "Linux" ]] && [[ "$ARCH" == "aarch64" || "$ARCH" == "ppc64le" ]]; then
     echo "skipping QA tests on linux $ARCH"
     echo "because of non working MPI"
