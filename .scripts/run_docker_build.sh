@@ -71,9 +71,11 @@ DONE_CANARY="$ARTIFACTS/conda-forge-build-done-${CONFIG}"
 rm -f "$DONE_CANARY"
 
 # Allow people to specify extra default arguments to `docker run` (e.g. `--rm`)
+echo @@@@@
+echo "CONDA_FORGE_DOCKER_RUN_ARGS" ${CONDA_FORGE_DOCKER_RUN_ARGS}
 DOCKER_RUN_ARGS="${CONDA_FORGE_DOCKER_RUN_ARGS}"
 if [ -z "${CI}" ]; then
-    DOCKER_RUN_ARGS="-it ${DOCKER_RUN_ARGS}"
+    DOCKER_RUN_ARGS="-it ${DOCKER_RUN_ARGS} --shm-size=256m"
 fi
 
 ( endgroup "Configure Docker" ) 2> /dev/null
