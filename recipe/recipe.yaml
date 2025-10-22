@@ -133,7 +133,9 @@ tests:
       file: run_test.sh
       env:
         armci_network: ${{ armci_network }}
+        target_platform: ${{target_platform }}
         CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
+        HOST_PLATFORM: ${{ env.get("HOST_PLATFORM") }}
 
 about:
   homepage: https://nwchemgit.github.io

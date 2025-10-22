@@ -3,10 +3,9 @@ set -ex
 export ARCH=$(uname -m)
 echo ARCH is $ARCH
 echo HOST_PLATFORM is $HOST_PLATFORM
-conda_platform=$(conda info |grep platfo |cut -d : -f 2|sed  's/ //' )
-echo conda_platform is $conda_platform
-if [[ "$conda_platform" == linux-aarch64 || "$conda_platform" == linux-ppc64le ]]; then
-    echo "skipping QA tests on $conda_platform"
+echo target_platform is $target_platform
+if [[ "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
+    echo "skipping QA tests on $target_platform"
     echo "because of non working MPI"
     exit 0
 fi
