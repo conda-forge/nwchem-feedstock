@@ -59,7 +59,7 @@ fi
 export CONDA_FORGE_DOCKER_RUN_ARGS="--shm-size 256m"
 build_arch=$(echo $CONDA_TOOLCHAIN_HOST | cut -d - -f 1)
 echo "build_arch is $build_arch"
-export QUICK_NWBUILD=1
+#export QUICK_NWBUILD=1
 if [[ -z "$QUICK_NWBUILD" ]]; then
 export NWCHEM_MODULES="all python gwmol xtb bsemol"
 # required for xtb module
