@@ -1,8 +1,8 @@
 context:
   name: nwchem
-  #version: "7.3.0"
-  version: nightly
-  hash: 147e96fa
+  version: "7.3.0"
+  #version: nightly
+  hash: 38347356
   release_tag: v${{ version }}-release
   user: edoapra
   date: 2025-10-24
@@ -14,7 +14,7 @@ package:
 
 source:
   url: https://github.com/${{ user }}/nwchem/releases/download/${{ release_tag }}/nwchem-${{ version }}-release.revision-${{ hash }}-src.${{ date }}.tar.bz2
-  sha256: ffb92efbaf5b497ec6d08144a6833c34813a3711124b8823165c1d89a5584890
+  sha256: a33b43962ab12cede66eb9ab5f8896038405876bc4c03a09ba2d78623995d415
   patches:
     - qalargemem.patch
     - conda_nwchemrc.patch
