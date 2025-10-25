@@ -1,8 +1,8 @@
 armci_network:
   - mpi_ts
   - mpi_pr
-  - mpi_pt
-  - mpi3
+#  - mpi_pt
+#  - mpi3
 
 mpi:
   - openmpi
@@ -21,5 +21,5 @@ fortran_compiler:
 fortran_compiler_version:
   - 12
 c_stdlib_version:
-  - "2.17"                     # [linux]                                                                                                          
+  - "2.17"                     # [linux]
   - "10.13"                    # [osx]   

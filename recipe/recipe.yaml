@@ -1,0 +1,153 @@
+context:
+  name: nwchem
+  version: "7.3.0"
+  #version: nightly
+  hash: e60d3d90
+  release_tag: v${{ version }}-release
+  user: nwchemgit
+  date: 2025-10-24
+  build: 0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/${{ user }}/nwchem/releases/download/${{ release_tag }}/nwchem-${{ version }}-release.revision-${{ hash }}-src.${{ date }}.tar.bz2
+  sha256: a2d4478ed38a47451904c3ca6268a25bc18c05b6773b43d5fdb2ba4e3b4e1e29
+  patches:
+    - qalargemem.patch
+    - conda_nwchemrc.patch
+    - tblite_omp.patch
+ 
+build:
+  number: ${{ build }} 
+  skip:
+    - win
+    - py==311 and (armci_network==mpi3)
+  string: py${{ CONDA_PY }}_${{ armci_network }}_h${{ PKG_HASH }}_${{ build }}
+  variant:
+    use_keys:
+      - armci_network
+    down_prioritize_variant: ${{ 0 if mpi_ts else 1 }}
+  script:
+    env:
+      CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
+requirements:
+  build:
+    - cmake >=3.21
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('fortran') }}
+    - ${{ compiler('cxx') }}
+    - if: build_platform != target_platform
+      then:
+        - python  
+        - cross-python_${{ target_platform }} 
+    - make
+    - gnuconfig
+    - sed
+    - perl
+    - ${{ mpi }}
+    - if: linux
+      then:
+        - libgomp
+    - if: osx
+      then:
+        - llvm-openmp
+  host:
+    - ${{ mpi }}
+    - openblas
+    - scalapack
+    - python
+    - libxc *.* *cpu*
+    - openssh
+    - if: not (linux64 or osx)
+      then:
+        - plumed
+    - if: osx
+      then:
+        - llvm-openmp
+    - if: linux
+      then:
+        - libgomp
+  run:
+    - ${{ mpi }}
+    - openblas
+    - libopenblas
+    - scalapack
+    - python
+    - if: not (linux64 or osx)
+      then:
+        - plumed
+    - if: osx
+      then:
+        - llvm-openmp
+    - if: linux
+      then:
+        - libgomp
+        - openssh
+
+tests:
+  - files:
+      source:
+        - QA/doaf*
+        - QA/run*
+        - QA/*sh
+        - QA/nwpa*
+        - QA/tests/h2o_opt
+        - QA/tests/dft_he2+
+        - QA/tests/small_intchk
+        - QA/tests/h2o_dk
+        - QA/tests/cosmo_h2o_dft
+        - QA/tests/pyqa3
+        - QA/tests/tddft_h2o
+        - QA/tests/tddft_n2+
+        - QA/tests/tddft_ac_co
+        - QA/tests/hi_zora_sf
+        - QA/tests/prop_ch3f
+        - QA/tests/h2_bnl
+        - QA/tests/h2o_bnl
+        - QA/tests/h2o-camb3lyp-pol
+        - QA/tests/h2o-cambeckehh
+        - QA/tests/h2o-campbe0
+        - QA/tests/h2o-lcpbe
+        - QA/tests/o2_bnl
+        - QA/tests/o2_hfattn
+        - QA/tests/dmo_tddft_cd
+        - QA/tests/dmo_tddft_cd_velocity
+        - QA/tests/h2o-response
+        - QA/tests/h2o2-response
+        - QA/tests/h2o2-response-uhf
+        - QA/tests/h2o2-response-uhf-damping
+        - QA/tests/h2o2-prop-notrans
+        - QA/tests/ch3radical_unrot
+        - QA/tests/localize-ibo-aa
+        - QA/tests/localize-ibo-allyl
+        - QA/tests/localize-pm-allyl
+        - QA/tests/localize-pm-aa
+        - QA/tests/x2c-h2se
+        - QA/tests/hg-1e-hfc-x2c
+        - QA/tests/dft_he2p_wb97
+    script:
+      file: run_test.sh
+      env:
+        armci_network: ${{ armci_network }}
+        target_platform: ${{ target_platform }}
+        CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
+
+about:
+  homepage: https://nwchemgit.github.io
+  license: ECL-2.0
+  license_family: OTHER
+  license_file: LICENSE
+  summary: Open Source High-Performance Computational Chemistry
+  description: |
+    NWChem is actively developed by a consortium of developers and maintained by the Environmental Molecular Sciences Laboratory (EMSL), a US DOE Office of Science User Facility located at the Pacific Northwest National Laboratory (PNNL) in Washington State.
+  documentation: https://nwchemgit.github.io/
+  repository: https://github.com/nwchemgit/nwchem
+
+extra:
+  recipe-maintainers:
+    - ltalirz
+    - edoapra
