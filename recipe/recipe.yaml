@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-10-24
-  build: 0
+  build: 1
 
 package:
   name: ${{ name|lower }}
@@ -25,7 +25,7 @@ build:
   skip:
     - win
     - py==311 and (armci_network==mpi3)
-  string: py${{ CONDA_PY }}_${{ armci_network }}_h${{ PKG_HASH }}_${{ build }}
+  string: py${{ PY_VER }}_${{ armci_network }}_h${{ PKG_HASH }}_${{ build }}
   variant:
     use_keys:
       - armci_network
