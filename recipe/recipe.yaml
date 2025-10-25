@@ -24,8 +24,7 @@ build:
   number: ${{ build }} 
   skip:
     - win
-    - py==311 and (armci_network==mpi3)
-#  string: py${{ PY_VER }}_${{ armci_network }}_h${{ PKG_HASH }}_${{ build }}
+  string: py$${{ python | version_to_buildstring }}_${{ armci_network }}_h${{ hash }}_${{ build }}
   variant:
     use_keys:
       - armci_network
