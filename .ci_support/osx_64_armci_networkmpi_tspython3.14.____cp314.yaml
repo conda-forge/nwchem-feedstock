@@ -23,7 +23,7 @@ cxx_compiler_version:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 llvm_openmp:
 - '19'
 macos_machine:
