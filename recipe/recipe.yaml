@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 0
+  build: 1
 
 package:
   name: ${{ name|lower }}
@@ -26,9 +26,7 @@ build:
     - win
   string: py${{ python | version_to_buildstring }}_${{ armci_network }}_h${{ hash }}_${{ build }}
   variant:
-    use_keys:
-      - armci_network
-    down_prioritize_variant: ${{ 0 if mpi_ts else 1 }}
+    down_prioritize_variant: ${{ 0 if armci_network == 'mpi_ts' else 1 }}
   script:
     env:
       CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
