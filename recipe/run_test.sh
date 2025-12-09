@@ -36,7 +36,7 @@ ompi_info --all|grep MCA\ btl:
     export OMPI_MCA_plm_rsh_agent=ssh
     export OMPI_MCA_btl=self,tcp
     export OMPI_MCA_osc=^ucx
-    export OMPI_MCA_btl_tcp_if_include=lo
+#    export OMPI_MCA_btl_tcp_if_include=lo
     export OMPI_MCA_btl=self,tcp
 #fi
 #export OMPI_MCA_btl_base_verbose=40
