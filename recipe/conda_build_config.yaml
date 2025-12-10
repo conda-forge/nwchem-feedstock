@@ -1,2 +1,26 @@
+armci_network:
+  - mpi_ts
+  - mpi_pr
+#  - mpi_pt
+#  - mpi3
+
 mpi:
   - openmpi
+
+c_compiler:
+  - gcc                        # [linux]
+  - clang                      # [osx]
+c_compiler_version:
+  - 13                         # [linux]
+  - 16                         # [osx]
+cxx_compiler_version:
+  - 13                         # [linux]
+  - 16                         # [osx]
+fortran_compiler:
+  - gfortran
+fortran_compiler_version:
+  - 13
+c_stdlib_version:
+  - "2.17"                     # [linux]
+  - "10.13"                    # [osx and x86_64]
+  - "11.0"                    #  [osx and arm64]
