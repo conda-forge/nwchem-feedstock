@@ -512,5 +512,5 @@ Feedstock Maintainers
 =====================
 
 * [@edoapra](https://github.com/edoapra/)
-* [@ltalirz](https://github.com/ltalirz/)
+* [@dmejiar](https://github.com/dmejiar/)
 
