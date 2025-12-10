@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 2
+  build: 3
 
 package:
   name: ${{ name|lower }}
