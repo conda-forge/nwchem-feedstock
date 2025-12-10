@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 1
+  build: 2
 
 package:
   name: ${{ name|lower }}
@@ -21,12 +21,12 @@ source:
     - tblite_omp.patch
  
 build:
-  number: ${{ build }} 
+  number: ${{ build + 1000 if armci_network == "mpi_ts" else build }}
   skip:
     - win
-  string: py${{ python | version_to_buildstring }}_${{ armci_network }}_h${{ hash }}_${{ build }}
   variant:
     down_prioritize_variant: ${{ 0 if armci_network == 'mpi_ts' else 1 }}
+  string: py${{ python | version_to_buildstring }}_${{ armci_network }}_h${{ hash }}_${{ build + 1000 if armci_network == "mpi_ts" else build }}
   script:
     env:
       CONDA_FORGE_DOCKER_RUN_ARGS: "--shm-size=256m"
