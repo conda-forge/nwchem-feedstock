@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 2
+  build: 3
 
 package:
   name: ${{ name|lower }}
@@ -24,6 +24,7 @@ build:
   number: ${{ build + 1000 if armci_network == "mpi_ts" else build }}
   skip:
     - win
+    - match(openmpi, "=external")
   variant:
     down_prioritize_variant: ${{ 0 if armci_network == 'mpi_ts' else 1 }}
   string: py${{ python | version_to_buildstring }}_${{ armci_network }}_h${{ hash }}_${{ build + 1000 if armci_network == "mpi_ts" else build }}
@@ -147,3 +148,4 @@ about:
 extra:
   recipe-maintainers:
     - edoapra
+    - dmejiar

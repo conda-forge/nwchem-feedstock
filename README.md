@@ -511,6 +511,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@dmejiar](https://github.com/dmejiar/)
 * [@edoapra](https://github.com/edoapra/)
-* [@ltalirz](https://github.com/ltalirz/)
 
