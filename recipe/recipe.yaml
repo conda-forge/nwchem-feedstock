@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 2
+  build: 3
 
 package:
   name: ${{ name|lower }}
@@ -19,7 +19,7 @@ source:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
- 
+
 build:
   number: ${{ build + 1000 if armci_network == "mpi_ts" else build }}
   skip:
@@ -39,8 +39,8 @@ requirements:
     - ${{ compiler('cxx') }}
     - if: build_platform != target_platform
       then:
-        - python  
-        - cross-python_${{ target_platform }} 
+        - python
+        - cross-python_${{ target_platform }}
     - make
     - gnuconfig
     - sed
