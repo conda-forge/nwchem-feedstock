@@ -12,7 +12,3 @@ c_compiler:
   - clang                      # [osx]
 fortran_compiler:
   - gfortran
-c_stdlib_version:
-  - "2.28"                     # [linux]
-  - "11.0"                     # [osx and x86_64]
-  - "11.0"                    #  [osx and arm64]
