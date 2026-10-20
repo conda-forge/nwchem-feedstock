@@ -58,6 +58,7 @@ requirements:
     - openblas
     - scalapack
     - python
+    - libpython # needed for python3.5+
     - libxc *.* *cpu*
     - openssh
     - if: not (linux64 or osx)
