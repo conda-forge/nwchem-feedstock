@@ -19,6 +19,7 @@ source:
     - qalargemem.patch
     - conda_nwchemrc.patch
     - tblite_omp.patch
+    - ga_edoapra.patch
 
 build:
   number: ${{ build + 1000 if armci_network == "mpi_ts" else build }}
