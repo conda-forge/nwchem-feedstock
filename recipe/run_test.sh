@@ -11,7 +11,8 @@ fi
 env
 echo pwd is $(pwd)
 export OMP_NUM_THREADS=1
-export NWCHEM_TOP=$SRC_DIR
+#export NWCHEM_TOP=$SRC_DIR
+export NWCHEM_TOP=$(pwd)
 export NWCHEM_EXECUTABLE=$(which nwchem)
 export NWCHEM_TARGET=""
 export MPIRUN_PATH=$(which mpirun)
@@ -43,7 +44,8 @@ ompi_info --all|grep MCA\ btl:
 env|grep -i armci
 echo "armci_network is " $armci_network
 echo "SRC_DIR is :" $SRC_DIR
-echo "ls -lrta $SRC_DIR/QA" $(ls -lrta $SRC_DIR/QA) || true
+echo "ls -lrta $NWCHEM_TOP/QA" $(ls -lrta $NWCHEM_TOP/QA) || true
+#echo "ls -lrta $SRC_DIR/QA" $(ls -lrta $SRC_DIR/QA) || true
 if [[ $armci_network  == 'mpi_pt' ]]; then
     QA_NPROC=1
 else
