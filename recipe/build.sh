@@ -126,6 +126,7 @@ make CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC}  DEPEND_CC=${CC_FOR_BUILD} nwchem_c
 cat ${SRC_DIR}/src/config/nwchem_config.h
 #make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${CC} 64_to_32 
 export USE_FPICF=1
+cd tools && rm -rf ga-* && ./get-tools-github && cd ..
 mkdir -p ${SRC_DIR}/tools/install/lib ${SRC_DIR}/tools/install/include || true
 make DEPEND_CC=${CC_FOR_BUILD} CC=${CC} _CC=${_CC} FC=${FC} _FC=${_FC} CFLAGS_FORGA="-fPIC -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAGS_FORGA="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib" FFLAG_INT="-fdefault-integer-8"  _CPU=${build_arch}
 if [[ "$?" != 0 ]]; then
