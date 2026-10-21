@@ -21,7 +21,7 @@ source:
     - tblite_omp.patch
     - ga_edoapra.patch
     - if: osx
-      then: cmake_rpath.patch # [osx]
+      then: cmake_rpath.patch
 
 build:
   number: ${{ build + 1000 if armci_network == "mpi_ts" else build }}
