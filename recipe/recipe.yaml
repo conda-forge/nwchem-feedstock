@@ -6,7 +6,7 @@ context:
   release_tag: v${{ version }}-release
   user: nwchemgit
   date: 2025-11-06
-  build: 3
+  build: 4
 
 package:
   name: ${{ name|lower }}
@@ -63,9 +63,6 @@ requirements:
     - libpython # needed for python3.5+
     - libxc *.* *cpu*
     - openssh
-    - if: not (linux64 or osx)
-      then:
-        - plumed
     - if: osx
       then:
         - llvm-openmp
@@ -78,9 +75,6 @@ requirements:
     - libopenblas
     - scalapack
     - python
-    - if: not (linux64 or osx)
-      then:
-        - plumed
     - if: osx
       then:
         - llvm-openmp

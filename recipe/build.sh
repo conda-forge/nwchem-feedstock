@@ -86,7 +86,9 @@ export LIBXC_LIB="$PREFIX/lib"
 
 if [[ -z "$QUICK_NWBUILD" ]]; then
 if [[ "$build_arch" == "x86_64" ]]; then
+if [ $(uname -s) != 'Darwin' ]; then
     export BUILD_PLUMED=1
+fi
 fi
 # https://github.com/simint-chem/simint-generator
 env | grep -i arch
