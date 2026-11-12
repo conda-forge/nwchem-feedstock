@@ -164,12 +164,10 @@ spce $PREFIX/share/nwchem/data/solvents/spce.rst
 charmm_s $PREFIX/share/nwchem/data/charmm_s/
 charmm_x $PREFIX/share/nwchem/data/charmm_x/
 EOF
-mkdir -p "$PREFIX/etc/conda/activate.d/" "$PREFIX/etc/conda/deactivate.d/"
-
-cat > "$PREFIX/etc/conda/activate.d/nwchem_env.sh" << "EOF"
-export NWCHEM_BASIS_LIBRARY=$CONDA_PREFIX/share/nwchem/libraries/
-export NWCHEM_NWPW_LIBRARY=$CONDA_PREFIX/share/nwchem/libraryps/
-EOF
-cat > "$PREFIX/etc/conda/activate.d/nwchem_env.fish" << "EOF"
-    bash $CONDA_PREFIX/etc/conda/activate.d/nwchem_env.sh
+mkdir -p "$PREFIX/etc/conda/env_vars.d"
+cat > "$PREFIX/etc/conda/env_vars.d/${PKG_NAME}.json" << EOF
+{
+  "NWCHEM_BASIS_LIBRARY": "$PREFIX/share/nwchem/libraries/",
+  "NWCHEM_NWPW_LIBRARY": "$PREFIX/share/nwchem/libraryps/"
+}
 EOF

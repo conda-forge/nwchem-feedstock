@@ -3,6 +3,8 @@ set -ex
 export ARCH=$(uname -m)
 echo ARCH is $ARCH
 echo target_platform is $target_platform
+test "$NWCHEM_BASIS_LIBRARY" = "$PREFIX/share/nwchem/libraries/"
+test "$NWCHEM_NWPW_LIBRARY" = "$PREFIX/share/nwchem/libraryps/"
 if [[ "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
     echo "skipping QA tests on $target_platform"
     echo "because of non working MPI"
